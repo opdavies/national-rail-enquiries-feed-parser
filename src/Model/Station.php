@@ -6,4 +6,7 @@ namespace Opdavies\NationalRailEnquriesFeedParser\Model;
 
 final class Station
 {
+    public string $CrsCode;
+
+    public string $Name;
 }
