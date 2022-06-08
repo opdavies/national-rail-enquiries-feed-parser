@@ -23,3 +23,11 @@ it('parses a list of stations', function () {
         ->each->toBeInstanceOf(Station::class)
         ;
 });
+
+it('parses an empty list of stations', function () {
+    $parser = new StationsXmlParser();
+
+    $stations = $parser->parse('');
+
+    expect($stations)->toBeEmpty();
+});
