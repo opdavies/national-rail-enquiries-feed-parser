@@ -23,7 +23,7 @@ final class StationsXmlFeedParser implements StationsFeedParser
             return [];
         }
 
-        $xml = simplexml_load_string($data);
+        $xml = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
 
         $stations = [];
 

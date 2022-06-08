@@ -6,9 +6,16 @@ namespace Opdavies\NationalRailEnquriesFeedParser\Model;
 
 final class Station
 {
+    private array $Accessibility;
+
     private string $CrsCode;
 
     private string $Name;
+
+    public function getAssistedTravelText(): string
+    {
+        return $this->Accessibility['Helpline']['com_Annotation']['com_Note'];
+    }
 
     public function getCrsCode(): string
     {
@@ -18,6 +25,11 @@ final class Station
     public function getName(): string
     {
         return $this->Name;
+    }
+
+    public function setAccessibility(array $values): void
+    {
+        $this->Accessibility = $values;
     }
 
     public function setCrsCode(string $crsCode): void

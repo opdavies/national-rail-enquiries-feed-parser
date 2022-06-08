@@ -7,8 +7,15 @@ it('returns the station information', function () {
     $data = <<<EOF
         <StationList>
             <Station>
-                <Name>Cardiff Central</Name>
+                <Accessibility>
+                    <Helpline>
+                        <com_Annotation>
+                            <com_Note><![CDATA[<p>Test.</p>]]></com_Note>
+                        </com_Annotation>
+                    </Helpline>
+                </Accessibility>
                 <CrsCode>CDF</CrsCode>
+                <Name>Cardiff Central</Name>
             </Station>
         </StationList>
     EOF;
@@ -20,6 +27,7 @@ it('returns the station information', function () {
 
     expect($station)->toBeInstanceOf(Station::class);
 
+    expect($station->getAssistedTravelText())->toBe('<p>Test.</p>');
     expect($station->getCrsCode())->toBe('CDF');
     expect($station->getName())->toBe('Cardiff Central');
 });
