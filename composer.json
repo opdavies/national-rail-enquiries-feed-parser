@@ -14,10 +14,12 @@
         }
     ],
     "require": {
-        "symfony/serializer": "^5.4"
+        "symfony/serializer": "^5.4",
+        "symfony/property-access": "^5.4"
     },
     "require-dev": {
-        "pestphp/pest": "^1.21"
+        "pestphp/pest": "^1.21",
+        "symfony/var-dumper": "^5.4"
     },
     "config": {
         "allow-plugins": {
