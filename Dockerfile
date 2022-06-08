@@ -24,9 +24,3 @@ COPY --chown=app:app composer.* ./
 RUN composer install
 
 COPY --chown=app:app . .
-
-###
-
-FROM dev AS test
-
-RUN pest

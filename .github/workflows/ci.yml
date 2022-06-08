@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  build-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # v2.3.4
@@ -21,8 +21,7 @@ jobs:
           DOCKER_BUILDKIT: 1
 
       - run: |
-          docker run --rm -t \
-            --entrypoint pest \
-            nre-feed-parser:dev
+          docker run --rm -t --entrypoint phpstan nre-feed-parser:dev
+          docker run --rm -t --entrypoint pest nre-feed-parser:dev
 
 # vim: sw=2 ts=2

@@ -16,7 +16,8 @@
     "require": {
         "symfony/serializer": "^5.4",
         "symfony/property-access": "^5.4",
-        "webmozart/assert": "^1.11"
+        "webmozart/assert": "^1.11",
+        "phpstan/phpstan": "^1.7"
     },
     "require-dev": {
         "pestphp/pest": "^1.21",
