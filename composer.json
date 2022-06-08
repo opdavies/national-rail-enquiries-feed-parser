@@ -1,0 +1,27 @@
+{
+    "name": "opdavies/national-rail-enquries-feed-parser",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Opdavies\\NationalRailEnquriesFeedParser\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oliver Davies",
+            "email": "oliver.davies@tfw.wales"
+        }
+    ],
+    "require": {
+        "symfony/serializer": "^5.4"
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.21"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
