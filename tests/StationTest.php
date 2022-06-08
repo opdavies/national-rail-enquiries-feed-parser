@@ -20,6 +20,6 @@ it('returns the station information', function () {
 
     expect($station)->toBeInstanceOf(Station::class);
 
-    expect($station->CrsCode)->toBe('CDF');
-    expect($station->Name)->toBe('Cardiff Central');
+    expect($station->getCrsCode())->toBe('CDF');
+    expect($station->getName())->toBe('Cardiff Central');
 });

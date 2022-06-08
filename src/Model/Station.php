@@ -6,7 +6,27 @@ namespace Opdavies\NationalRailEnquriesFeedParser\Model;
 
 final class Station
 {
-    public string $CrsCode;
+    private string $CrsCode;
 
-    public string $Name;
+    private string $Name;
+
+    public function getCrsCode(): string
+    {
+        return $this->CrsCode;
+    }
+
+    public function getName(): string
+    {
+        return $this->Name;
+    }
+
+    public function setCrsCode(string $crsCode): void
+    {
+        $this->CrsCode = $crsCode;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->Name = $name;
+    }
 }
