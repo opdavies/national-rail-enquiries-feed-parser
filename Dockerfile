@@ -12,3 +12,21 @@ RUN useradd --create-home app \
   && apt-get install -yqq --no-install-recommends \
     git \
     unzip
+
+###
+
+FROM base AS dev
+
+ENV PATH ${PATH}:/app/vendor/bin
+
+COPY --chown=app:app composer.* ./
+
+RUN composer install
+
+COPY --chown=app:app . .
+
+###
+
+FROM dev AS test
+
+RUN pest
