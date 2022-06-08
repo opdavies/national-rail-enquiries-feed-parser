@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Serializer;
 use Webmozart\Assert\Assert;
 use Webmozart\Assert\InvalidArgumentException;
 
-final class StationsXmlParser implements StationsFeedParser
+final class StationsXmlFeedParser implements StationsFeedParser
 {
     public function parse(string $data): array
     {

@@ -1,7 +1,7 @@
 <?php
 
 use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
-use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsXmlParser;
+use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsXmlFeedParser;
 
 it('parses a list of stations', function () {
     $data = <<<EOF
@@ -14,7 +14,7 @@ it('parses a list of stations', function () {
         </StationsList>
     EOF;
 
-    $parser = new StationsXmlParser();
+    $parser = new StationsXmlFeedParser();
 
     $stations = $parser->parse($data);
 
@@ -25,7 +25,7 @@ it('parses a list of stations', function () {
 });
 
 it('parses an empty list of stations', function () {
-    $parser = new StationsXmlParser();
+    $parser = new StationsXmlFeedParser();
 
     $stations = $parser->parse('');
 
