@@ -6,6 +6,9 @@ namespace Opdavies\NationalRailEnquriesFeedParser\Model;
 
 final class Station
 {
+    /**
+     * @var array<string,mixed>
+     */
     private array $Accessibility;
 
     private string $CrsCode;
@@ -27,6 +30,9 @@ final class Station
         return $this->Name;
     }
 
+    /**
+     * @param array<string,mixed> $values
+     */
     public function setAccessibility(array $values): void
     {
         $this->Accessibility = $values;
