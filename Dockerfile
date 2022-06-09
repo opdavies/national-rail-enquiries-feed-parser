@@ -22,6 +22,8 @@ ENV PATH ${PATH}:/app/vendor/bin:/app/tools/php-cs-fixer/vendor/bin
 COPY --chown=app:app composer.* ./
 COPY --chown=app:app tools tools
 
+USER app
+
 RUN composer install
 RUN composer install --working-dir=tools/php-cs-fixer
 
