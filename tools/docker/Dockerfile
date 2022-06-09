@@ -2,7 +2,7 @@ FROM php:7.4-cli-bullseye AS base
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-ENTRYPOINT bash
+ENTRYPOINT ["bash"]
 
 WORKDIR /app
 
@@ -11,7 +11,8 @@ RUN useradd --create-home app \
   && apt-get update -yqq \
   && apt-get install -yqq --no-install-recommends \
     git \
-    unzip
+    unzip \
+  && rm -fr /var/lib/apt/lists/*
 
 ###
 
@@ -24,7 +25,7 @@ COPY --chown=app:app tools tools
 
 USER app
 
-RUN composer install
-RUN composer install --working-dir=tools/php-cs-fixer
+RUN composer install \
+  && composer install --working-dir=tools/php-cs-fixer
 
 COPY --chown=app:app . .
