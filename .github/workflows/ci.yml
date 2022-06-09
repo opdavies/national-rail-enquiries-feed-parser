@@ -21,6 +21,7 @@ jobs:
           DOCKER_BUILDKIT: 1
 
       - run: |
+          docker run --rm -t --entrypoint php-cs-fixer nre-feed-parser:dev fix src --dry-run --diff
           docker run --rm -t --entrypoint phpstan nre-feed-parser:dev
           docker run --rm -t --entrypoint pest nre-feed-parser:dev
 

@@ -17,10 +17,12 @@ RUN useradd --create-home app \
 
 FROM base AS dev
 
-ENV PATH ${PATH}:/app/vendor/bin
+ENV PATH ${PATH}:/app/vendor/bin:/app/tools/php-cs-fixer/vendor/bin
 
 COPY --chown=app:app composer.* ./
+COPY --chown=app:app tools tools
 
 RUN composer install
+RUN composer install --working-dir=tools/php-cs-fixer
 
 COPY --chown=app:app . .
