@@ -6,6 +6,11 @@ parameters:
 			path: src/Serializer/StationSerializer.php
 
 		-
+			message: "#^Method Opdavies\\\\NationalRailEnquriesFeedParser\\\\Serializer\\\\StationSerializer\\:\\:deserialize\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Serializer/StationSerializer.php
+
+		-
 			message: "#^Method Opdavies\\\\NationalRailEnquriesFeedParser\\\\Serializer\\\\StationSerializer\\:\\:serialize\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Serializer/StationSerializer.php

@@ -24,12 +24,12 @@ final class StationSerializer implements SerializerInterface
         );
     }
 
-    public function serialize($data, string $format, array $context = []): string
+    public function serialize($data, $format, array $context = []): string
     {
         return $this->serializer->serialize($data, $format, $context);
     }
 
-    public function deserialize($data, string $type, string $format, array $context = [])
+    public function deserialize($data, $type, $format, array $context = [])
     {
         if ($type == Station::class) {
             $data = self::normalizeArrayValues($data);
