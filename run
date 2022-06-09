@@ -16,6 +16,11 @@ function ci:test {
   build
 
   coding-standards --dry-run
+
+  static-analysis
+  test
+
+  _run composer update --prefer-lowest
   static-analysis
   test
 }
