@@ -5,13 +5,13 @@ use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsXmlFeedParser;
 
 it('parses a list of stations from XML', function () {
     $data = <<<EOF
-        <StationsList>
+        <StationList>
             <Station></Station>
             <Station></Station>
             <Station></Station>
             <Station></Station>
             <Station></Station>
-        </StationsList>
+        </StationList>
     EOF;
 
     $parser = new StationsXmlFeedParser();
