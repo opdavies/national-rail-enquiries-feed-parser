@@ -13,7 +13,7 @@ function ci:test {
   # Run continuous integration (CI) checks.
   lint:dockerfile
 
-  build
+  build --target=dev
 
   coding-standards --dry-run
 
