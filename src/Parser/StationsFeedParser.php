@@ -11,7 +11,7 @@ interface StationsFeedParser
     public function parseStation(string $data): ?Station;
 
     /**
-     * @return array<string,mixed>
+     * @return array<int,Station>
      */
     public function parseStationList(string $data): array;
 }
