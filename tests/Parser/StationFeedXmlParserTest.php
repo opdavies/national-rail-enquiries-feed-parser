@@ -32,7 +32,7 @@ it('parses an empty list of stations', function () {
     expect($stations)->toBeEmpty();
 });
 
-it('it parses a single station', function () {
+it('parses a single station', function () {
     $data = <<<EOF
         <Station>
             <Accessibility>
