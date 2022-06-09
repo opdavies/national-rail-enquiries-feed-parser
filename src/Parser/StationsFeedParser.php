@@ -9,5 +9,5 @@ interface StationsFeedParser
     /**
      * @return array<string,mixed>
      */
-    public function parse(string $data): array;
+    public function parseStationList(string $data): array;
 }

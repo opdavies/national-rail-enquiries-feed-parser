@@ -16,7 +16,7 @@ it('parses a list of stations', function () {
 
     $parser = new StationsXmlFeedParser();
 
-    $stations = $parser->parse($data);
+    $stations = $parser->parseStationList($data);
 
     expect($stations)
         ->toHaveCount(5)
@@ -27,7 +27,7 @@ it('parses a list of stations', function () {
 it('parses an empty list of stations', function () {
     $parser = new StationsXmlFeedParser();
 
-    $stations = $parser->parse('');
+    $stations = $parser->parseStationList('');
 
     expect($stations)->toBeEmpty();
 });

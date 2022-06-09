@@ -22,7 +22,7 @@ it('returns the station information', function () {
 
     $parser = new StationsXmlFeedParser();
 
-    $stations = $parser->parse($data);
+    $stations = $parser->parseStationList($data);
     $station = $stations[0];
 
     expect($station)->toBeInstanceOf(Station::class);

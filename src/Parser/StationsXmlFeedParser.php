@@ -15,7 +15,7 @@ use Webmozart\Assert\InvalidArgumentException;
 
 final class StationsXmlFeedParser implements StationsFeedParser
 {
-    public function parse(string $data): array
+    public function parseStationList(string $data): array
     {
         try {
             Assert::stringNotEmpty($data);
