@@ -15,6 +15,24 @@ use Webmozart\Assert\InvalidArgumentException;
 
 final class StationsXmlFeedParser implements StationsFeedParser
 {
+    public function parseStation(string $data): ?Station
+    {
+        try {
+            Assert::stringNotEmpty($data);
+        } catch (InvalidArgumentException $e) {
+            return null;
+        }
+
+        $xml = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
+
+        $serializer = new Serializer(
+            [new ObjectNormalizer(), new PropertyNormalizer(), new ArrayDenormalizer()],
+            [new JsonEncoder()]
+        );
+
+        return $serializer->deserialize(json_encode($xml), Station::class, 'json');
+    }
+
     public function parseStationList(string $data): array
     {
         try {
