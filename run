@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+set -eu
+
+image_name="nre-station-feed-parser"
+
+function build {
+  # Build the Docker image.
+  docker image build . -f tools/docker/Dockerfile -t $image_name "${@}"
+}
+
+function ci:test {
+  # Run continuous integration (CI) checks.
+  lint:dockerfile
+
+  build
+
+  coding-standards --dry-run
+  static-analysis
+  test
+}
+
+function coding-standards {
+  # Run coding standards checks.
+  _run php-cs-fixer fix src --diff "${@}"
+}
+
+function help {
+  printf "%s <task> [args]\n\nTasks:\n" "${0}"
+
+  compgen -A function | grep -v "^_" | cat -n
+
+  printf "\nExtended help:\n  Each task has comments for general usage\n"
+}
+
+function lint:dockerfile {
+  # Lint Dockerfile with hadolint
+  docker container run --rm -i \
+    hadolint/hadolint hadolint \
+      --ignore DL3008 \
+      --ignore DL3022 "${@}" \
+      - < tools/docker/Dockerfile
+}
+
+function shell {
+  # Start a new bash session within the container.
+  docker container run --rm -i -t \
+    --entrypoint bash \
+    $image_name \
+    "${@}"
+}
+
+function static-analysis {
+  # Run static analysis checks.
+  _run phpstan "${@}"
+}
+
+function test {
+  # Run automated tests.
+  _run pest "${@}"
+}
+
+function _run {
+  local entrypoint="$1"
+  shift 1
+
+  docker container run --rm -t \
+    --entrypoint ${entrypoint} \
+    $image_name \
+    "${@}"
+}
+
+eval "${@:-help}"
