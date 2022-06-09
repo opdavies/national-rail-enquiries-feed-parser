@@ -3,7 +3,7 @@
 use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
 use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsXmlFeedParser;
 
-it('parses a list of stations', function () {
+it('parses a list of stations from XML', function () {
     $data = <<<EOF
         <StationsList>
             <Station></Station>
@@ -24,7 +24,7 @@ it('parses a list of stations', function () {
         ;
 });
 
-it('parses an empty list of stations', function () {
+it('parses an empty list of stations from XML', function () {
     $parser = new StationsXmlFeedParser();
 
     $stations = $parser->parseStationList('');
@@ -32,7 +32,7 @@ it('parses an empty list of stations', function () {
     expect($stations)->toBeEmpty();
 });
 
-it('parses a single station', function () {
+it('parses a single station from XML', function () {
     $data = <<<EOF
         <Station>
             <Accessibility>
