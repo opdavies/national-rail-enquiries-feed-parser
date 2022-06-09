@@ -5,11 +5,7 @@ declare(strict_types=1);
 namespace Opdavies\NationalRailEnquriesFeedParser\Parser;
 
 use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Opdavies\NationalRailEnquriesFeedParser\Serializer\StationSerializer;
 use Webmozart\Assert\Assert;
 use Webmozart\Assert\InvalidArgumentException;
 
@@ -23,10 +19,7 @@ final class StationsJsonFeedParser implements StationsFeedParser
             return null;
         }
 
-        $serializer = new Serializer(
-            [new ObjectNormalizer(), new PropertyNormalizer(), new ArrayDenormalizer()],
-            [new JsonEncoder()]
-        );
+        $serializer = new StationSerializer();
 
         return $serializer->deserialize($data, Station::class, 'json');
     }
@@ -39,10 +32,7 @@ final class StationsJsonFeedParser implements StationsFeedParser
             return [];
         }
 
-        $serializer = new Serializer(
-            [new ObjectNormalizer(), new PropertyNormalizer(), new ArrayDenormalizer()],
-            [new JsonEncoder()]
-        );
+        $serializer = new StationSerializer();
 
         return $serializer->deserialize($data, Station::class . '[]', 'json');
     }
