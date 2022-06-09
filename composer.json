@@ -1,5 +1,5 @@
 {
-    "name": "opdavies/national-rail-enquries-feed-parser",
+    "name": "opdavies/national-rail-enquiries-feed-parser",
     "type": "library",
     "license": "MIT",
     "autoload": {
