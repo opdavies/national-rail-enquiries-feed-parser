@@ -19,16 +19,24 @@ function ci:test {
   # Run continuous integration (CI) checks.
   lint:dockerfile
 
-  build --target=dev
+  local php_versions=(
+    "7.4"
+    "8.0"
+    "8.1"
+  )
 
-  coding-standards --dry-run
+  for php_version in ${php_versions[@]}; do
+    PHP_VERSION=${php_version} build --target=dev
 
-  static-analysis
-  test
+    coding-standards --dry-run
 
-  cmd composer update --prefer-lowest
-  static-analysis
-  test
+    static-analysis
+    test
+
+    cmd composer update --prefer-lowest
+    static-analysis
+    test
+  done
 }
 
 function cmd {
@@ -81,4 +89,5 @@ function test {
   cmd pest "${@}"
 }
 
-eval "${@:-help}"
+TIMEFORMAT="Task completed in %3lR"
+time "${@:-help}"
