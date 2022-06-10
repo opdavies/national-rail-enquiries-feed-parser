@@ -31,23 +31,6 @@ final class StationSerializer implements SerializerInterface
 
     public function deserialize($data, $type, $format, array $context = [])
     {
-        if ($type == Station::class) {
-            $data = self::normalizeArrayValues($data);
-        }
-
         return $this->serializer->deserialize($data, $type, $format, $context);
-    }
-
-    private static function normalizeArrayValues(string $data): string
-    {
-        $data = json_decode($data);
-
-        foreach ($data as $key => $value) {
-            if (is_array($value)) {
-                $data->{$key} = $value[0]->{0};
-            }
-        }
-
-        return json_encode($data);
     }
 }

@@ -42,8 +42,8 @@ it('parses a single station from JSON', function () {
           }
         }
       },
-      "CrsCode": [ { "0": "CDF" } ],
-      "Name": [ { "0": "Cardiff Central" } ]
+      "CrsCode": "CDF",
+      "Name": "Cardiff Central"
     }
     EOF;
 
