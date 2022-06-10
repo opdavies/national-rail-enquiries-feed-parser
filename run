@@ -20,14 +20,24 @@ function ci:test {
   static-analysis
   test
 
-  _run composer update --prefer-lowest
+  cmd composer update --prefer-lowest
   static-analysis
   test
 }
 
+function cmd {
+  local entrypoint="$1"
+  shift 1
+
+  docker container run --rm -t \
+    --entrypoint ${entrypoint} \
+    $image_name \
+    "${@}"
+}
+
 function coding-standards {
   # Run coding standards checks.
-  _run php-cs-fixer fix src --diff "${@}"
+  cmd php-cs-fixer fix src --diff "${@}"
 }
 
 function help {
@@ -57,22 +67,12 @@ function shell {
 
 function static-analysis {
   # Run static analysis checks.
-  _run phpstan "${@}"
+  cmd phpstan "${@}"
 }
 
 function test {
   # Run automated tests.
-  _run pest "${@}"
-}
-
-function _run {
-  local entrypoint="$1"
-  shift 1
-
-  docker container run --rm -t \
-    --entrypoint ${entrypoint} \
-    $image_name \
-    "${@}"
+  cmd pest "${@}"
 }
 
 eval "${@:-help}"
