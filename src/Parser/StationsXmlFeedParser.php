@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Opdavies\NationalRailEnquriesFeedParser\Parser;
 
 use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
-use Opdavies\NationalRailEnquriesFeedParser\Serializer\StationSerializer;
 use Webmozart\Assert\Assert;
 use Webmozart\Assert\InvalidArgumentException;
 
-final class StationsXmlFeedParser implements StationsFeedParser
+final class StationsXmlFeedParser extends AbstractStationParser
 {
     public function parseStation(string $data): ?Station
     {
@@ -21,9 +20,7 @@ final class StationsXmlFeedParser implements StationsFeedParser
 
         $xml = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
 
-        $serializer = new StationSerializer();
-
-        return $serializer->deserialize(json_encode($xml), Station::class, 'json');
+        return $this->serializer->deserialize(json_encode($xml), Station::class, 'json');
     }
 
     public function parseStationList(string $data): array
@@ -42,8 +39,6 @@ final class StationsXmlFeedParser implements StationsFeedParser
             $stations[] = $station;
         }
 
-        $serializer = new StationSerializer();
-
-        return $serializer->deserialize(json_encode($stations), Station::class . '[]', 'json');
+        return $this->serializer->deserialize(json_encode($stations), Station::class . '[]', 'json');
     }
 }
