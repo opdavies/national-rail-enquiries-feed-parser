@@ -35,7 +35,7 @@ function ci:test {
     static-analysis
     test
 
-    cmd composer update --prefer-lowest
+    composer update --prefer-lowest
     static-analysis
     test
   done
@@ -49,6 +49,11 @@ function cmd {
     --entrypoint ${entrypoint} \
     $image_name \
     "${@}"
+}
+
+function composer {
+  # Run Composer commands.
+  cmd composer "${@}"
 }
 
 function coding-standards {
