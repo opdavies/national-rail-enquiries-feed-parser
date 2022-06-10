@@ -1,0 +1,21 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Opdavies\\\\NationalRailEnquriesFeedParser\\\\Serializer\\\\StationSerializer\\:\\:deserialize\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Serializer/StationSerializer.php
+
+		-
+			message: "#^Method Opdavies\\\\NationalRailEnquriesFeedParser\\\\Serializer\\\\StationSerializer\\:\\:deserialize\\(\\) has parameter \\$format with no type specified\\.$#"
+			count: 1
+			path: src/Serializer/StationSerializer.php
+
+		-
+			message: "#^Method Opdavies\\\\NationalRailEnquriesFeedParser\\\\Serializer\\\\StationSerializer\\:\\:deserialize\\(\\) has parameter \\$type with no type specified\\.$#"
+			count: 1
+			path: src/Serializer/StationSerializer.php
+
+		-
+			message: "#^Method Opdavies\\\\NationalRailEnquriesFeedParser\\\\Serializer\\\\StationSerializer\\:\\:serialize\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Serializer/StationSerializer.php

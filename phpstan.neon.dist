@@ -3,3 +3,7 @@ parameters:
   paths:
     - src
   reportUnmatchedIgnoredErrors: false
+
+includes:
+  - phpstan-baseline-lowest.neon
+  - phpstan-baseline.neon
