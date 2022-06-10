@@ -28,6 +28,8 @@ function ci:test {
   for php_version in ${php_versions[@]}; do
     PHP_VERSION=${php_version} build --target=dev
 
+    cmd php -v
+
     coding-standards --dry-run
 
     static-analysis
