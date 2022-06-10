@@ -5,8 +5,14 @@ set -eu
 image_name="nre-station-feed-parser"
 
 function build {
+  local php_version"=${PHP_VERSION:-7.4}"
+
   # Build the Docker image.
-  docker image build . -f tools/docker/Dockerfile -t $image_name "${@}"
+  docker image build . \
+    --build-arg PHP_VERSION=$php_version \
+    -f tools/docker/Dockerfile \
+    -t $image_name \
+    "${@}"
 }
 
 function ci:test {

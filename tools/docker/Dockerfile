@@ -1,4 +1,6 @@
-FROM php:7.4-cli-bullseye AS base
+ARG PHP_VERSION=${PHP_VERSION}
+
+FROM php:${PHP_VERSION}-cli-bullseye AS base
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
