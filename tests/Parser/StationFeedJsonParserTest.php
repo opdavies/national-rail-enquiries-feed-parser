@@ -6,11 +6,11 @@ use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsJsonFeedParser;
 it('parses a list of stations from JSON', function () {
     $data = <<<EOF
     [
-        {},
-        {},
-        {},
-        {},
-        {}
+        { "CrsCode": "CDF", "Name": "Cardiff Central" },
+        { "CrsCode": "CDF", "Name": "Cardiff Central" },
+        { "CrsCode": "CDF", "Name": "Cardiff Central" },
+        { "CrsCode": "CDF", "Name": "Cardiff Central" },
+        { "CrsCode": "CDF", "Name": "Cardiff Central" }
     ]
     EOF;
 

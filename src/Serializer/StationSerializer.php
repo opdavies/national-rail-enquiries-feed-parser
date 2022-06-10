@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Opdavies\NationalRailEnquriesFeedParser\Serializer;
 
-use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
+use Symfony\Component\Validator\Validation;
 
 final class StationSerializer implements SerializerInterface
 {
@@ -31,6 +32,19 @@ final class StationSerializer implements SerializerInterface
 
     public function deserialize($data, $type, $format, array $context = [])
     {
-        return $this->serializer->deserialize($data, $type, $format, $context);
+        $station = $this->serializer->deserialize($data, $type, $format, $context);
+
+        $validator = Validation::createValidatorBuilder()
+            ->enableAnnotationMapping(true)
+            ->addDefaultDoctrineAnnotationReader()
+            ->getValidator();
+
+        $violations = $validator->validate($station);
+
+        if ($violations->count() > 0) {
+            throw new ValidationFailedException('Validation failed.', $violations);
+        }
+
+        return $station;
     }
 }

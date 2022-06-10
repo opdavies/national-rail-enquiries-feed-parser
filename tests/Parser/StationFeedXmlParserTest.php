@@ -6,11 +6,26 @@ use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsXmlFeedParser;
 it('parses a list of stations from XML', function () {
     $data = <<<EOF
         <StationList>
-            <Station></Station>
-            <Station></Station>
-            <Station></Station>
-            <Station></Station>
-            <Station></Station>
+            <Station>
+                <CrsCode>CDF</CrsCode>
+                <Name>Cardiff Central</Name>
+            </Station>
+            <Station>
+                <CrsCode>CDF</CrsCode>
+                <Name>Cardiff Central</Name>
+            </Station>
+            <Station>
+                <CrsCode>CDF</CrsCode>
+                <Name>Cardiff Central</Name>
+            </Station>
+            <Station>
+                <CrsCode>CDF</CrsCode>
+                <Name>Cardiff Central</Name>
+            </Station>
+            <Station>
+                <CrsCode>CDF</CrsCode>
+                <Name>Cardiff Central</Name>
+            </Station>
         </StationList>
     EOF;
 

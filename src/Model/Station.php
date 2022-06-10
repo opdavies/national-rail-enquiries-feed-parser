@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Opdavies\NationalRailEnquriesFeedParser\Model;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 final class Station
 {
     /**
@@ -11,8 +13,14 @@ final class Station
      */
     private array $Accessibility;
 
+    /**
+     * @Assert\NotBlank
+     */
     private string $CrsCode;
 
+    /**
+     * @Assert\NotBlank
+     */
     private string $Name;
 
     public function getAssistedTravelText(): string
