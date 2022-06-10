@@ -1,5 +1,6 @@
 {
     "name": "opdavies/national-rail-enquiries-feed-parser",
+    "description": "A PHP library to parse station information from National Rail Enquiries in XML or JSON.",
     "type": "library",
     "license": "MIT",
     "autoload": {
