@@ -25,17 +25,15 @@ function ci:test {
     "8.1"
   )
 
-  for php_version in ${php_versions[@]}; do
-    PHP_VERSION=${php_version} build --target=dev
-
+  for php_version in "${php_versions[@]}"; do
+    PHP_VERSION="${php_version}" build --target=dev
     cmd php -v
 
     coding-standards --dry-run
-
     static-analysis
     test
 
-    composer update --prefer-lowest
+    composer:update:lowest
     static-analysis
     test
   done
@@ -54,6 +52,11 @@ function cmd {
 function composer {
   # Run Composer commands.
   cmd composer "${@}"
+}
+
+function composer:update:lowest {
+  # Install the lowest compatible dependencies.
+  composer update --prefer-lowest
 }
 
 function coding-standards {
