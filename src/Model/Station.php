@@ -15,6 +15,7 @@ final class Station
 
     /**
      * @Assert\NotBlank
+     * @Assert\Length(3)
      */
     private string $CrsCode;
 

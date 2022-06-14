@@ -2,6 +2,7 @@
 
 use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
 use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsXmlFeedParser;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
 
 it('parses a list of stations from XML', function () {
     $data = <<<EOF
@@ -72,3 +73,29 @@ it('parses a single station from XML', function () {
     expect($station->getCrsCode())->toBe('CDF');
     expect($station->getName())->toBe('Cardiff Central');
 });
+
+it('throws an exception if the CRS code is too short', function () {
+    $data = <<<EOF
+        <Station>
+            <CrsCode>12</CrsCode>
+            <Name>::Name::</Name>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $parser->parseStation($data);
+})->throws(ValidationFailedException::class);
+
+it('throws an exception if the CRS code is too long', function () {
+    $data = <<<EOF
+        <Station>
+            <CrsCode>1234</CrsCode>
+            <Name>::Name::</Name>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $parser->parseStation($data);
+})->throws(ValidationFailedException::class);
