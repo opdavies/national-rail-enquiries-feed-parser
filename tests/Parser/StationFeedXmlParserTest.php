@@ -77,7 +77,7 @@ it('parses a single station from XML', function () {
 it('throws an exception if the CRS code is too short', function () {
     $data = <<<EOF
         <Station>
-            <CrsCode>12</CrsCode>
+            <CrsCode>AA</CrsCode>
             <Name>::Name::</Name>
         </Station>
     EOF;
@@ -90,7 +90,20 @@ it('throws an exception if the CRS code is too short', function () {
 it('throws an exception if the CRS code is too long', function () {
     $data = <<<EOF
         <Station>
-            <CrsCode>1234</CrsCode>
+            <CrsCode>AAAA</CrsCode>
+            <Name>::Name::</Name>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $parser->parseStation($data);
+})->throws(ValidationFailedException::class);
+
+it('throws an exception if the CRS code contains invalid characters', function () {
+    $data = <<<EOF
+        <Station>
+            <CrsCode>123</CrsCode>
             <Name>::Name::</Name>
         </Station>
     EOF;

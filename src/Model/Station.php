@@ -14,8 +14,7 @@ final class Station
     private array $Accessibility;
 
     /**
-     * @Assert\NotBlank
-     * @Assert\Length(3)
+     * @Assert\Regex("/^[A-Z]{3}$/")
      */
     private string $CrsCode;
 
