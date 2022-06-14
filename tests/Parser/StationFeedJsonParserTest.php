@@ -2,6 +2,7 @@
 
 use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
 use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsJsonFeedParser;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
 
 it('parses a list of stations from JSON', function () {
     $data = <<<EOF
@@ -57,3 +58,27 @@ it('parses a single station from JSON', function () {
     expect($station->getCrsCode())->toBe('CDF');
     expect($station->getName())->toBe('Cardiff Central');
 });
+
+it('throws an exception if the CRS code is too short', function () {
+    $data = '{ "CrsCode": "AA", "Name": "::Name::" }';
+
+    $parser = new StationsJsonFeedParser();
+
+    $parser->parseStation($data);
+})->throws(ValidationFailedException::class);
+
+it('throws an exception if the CRS code is too long', function () {
+    $data = '{ "CrsCode": "AAAA", "Name": "::Name::" }';
+
+    $parser = new StationsJsonFeedParser();
+
+    $parser->parseStation($data);
+})->throws(ValidationFailedException::class);
+
+it('throws an exception if the CRS code contains invalid characters', function () {
+    $data = '{ "CrsCode": "123", "Name": "::Name::" }';
+
+    $parser = new StationsJsonFeedParser();
+
+    $parser->parseStation($data);
+})->throws(ValidationFailedException::class);
