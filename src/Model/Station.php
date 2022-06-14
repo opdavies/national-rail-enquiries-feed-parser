@@ -25,7 +25,7 @@ final class Station
 
     public function getAssistedTravelText(): string
     {
-        return $this->Accessibility['Helpline']['com_Annotation']['com_Note'];
+        return dot($this->Accessibility)->get('Helpline.com_Annotation.com_Note');
     }
 
     public function getCrsCode(): string

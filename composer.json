@@ -15,6 +15,7 @@
         }
     ],
     "require": {
+        "adbario/php-dot-notation": "^3.1",
         "doctrine/annotations": "^1.13",
         "symfony/cache": "^5.4",
         "symfony/property-access": "^4.4|^5.4",
