@@ -23,7 +23,7 @@ final class Station
      */
     private string $Name;
 
-    public function getAssistedTravelText(): string
+    public function getAssistedTravelText(): ?string
     {
         return dot($this->Accessibility)->get('Helpline.com_Annotation.com_Note');
     }
