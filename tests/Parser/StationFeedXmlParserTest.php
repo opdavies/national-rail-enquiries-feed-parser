@@ -1,5 +1,6 @@
 <?php
 
+use Opdavies\NationalRailEnquriesFeedParser\DataTransferObject\StationAddress;
 use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
 use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsXmlFeedParser;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
@@ -137,11 +138,10 @@ it("returns a 5 line address for a station", function () {
 
     $address = $station->getAddress();
 
-    expect($address)->toMatchArray([
-        'Aber station',
-        'Nantgarw Road',
-        'Aber',
-        'Caerphilly',
-        'CF83 1AQ',
-    ]);
+    expect($address)->toBeInstanceOf(StationAddress::class);
+    expect($address->line1)->toBe('Aber station');
+    expect($address->line2)->toBe('Nantgarw Road');
+    expect($address->line3)->toBe('Aber');
+    expect($address->line4)->toBe('Caerphilly');
+    expect($address->postcode)->toBe('CF83 1AQ');
 });

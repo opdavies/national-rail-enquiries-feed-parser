@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Opdavies\NationalRailEnquriesFeedParser\Model;
 
 use Illuminate\Support\Arr;
+use Opdavies\NationalRailEnquriesFeedParser\DataTransferObject\StationAddress;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final class Station
@@ -26,11 +27,14 @@ final class Station
      */
     private string $Name;
 
-    public function getAddress() {
-        return [
+    public function getAddress(): StationAddress {
+        /** @var array<int,string> */
+        $addressLines = [
             ...Arr::get($this->address, 'com:PostalAddress.add:A_5LineAddress.add:Line'),
             Arr::get($this->address, 'com:PostalAddress.add:A_5LineAddress.add:PostCode'),
         ];
+
+        return new StationAddress(...$addressLines);
     }
 
     public function getAssistedTravelText(): ?string
