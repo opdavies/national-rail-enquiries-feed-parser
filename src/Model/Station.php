@@ -10,6 +10,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 final class Station
 {
+    /**
+     * @var array<int,string>
+     */
     private array $address;
 
     /**
@@ -60,6 +63,9 @@ final class Station
         $this->Accessibility = $values;
     }
 
+    /**
+     * @param array<int,string> $address
+     */
     public function setAddress(array $address): void
     {
         $this->address = $address;
