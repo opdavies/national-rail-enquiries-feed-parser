@@ -19,6 +19,7 @@ final class StationsXmlFeedParser extends AbstractStationParser
             return null;
         }
 
+        libxml_use_internal_errors(true);
         $xml = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
 
         return $this->serializer->deserialize(json_encode($xml), Station::class, 'json');

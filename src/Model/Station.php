@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Opdavies\NationalRailEnquriesFeedParser\Model;
 
+use Illuminate\Support\Arr;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final class Station
 {
+    private array $address;
+
     /**
      * @var array<string,mixed>
      */
@@ -22,6 +25,13 @@ final class Station
      * @Assert\NotBlank
      */
     private string $Name;
+
+    public function getAddress() {
+        return [
+            ...Arr::get($this->address, 'com:PostalAddress.add:A_5LineAddress.add:Line'),
+            Arr::get($this->address, 'com:PostalAddress.add:A_5LineAddress.add:PostCode'),
+        ];
+    }
 
     public function getAssistedTravelText(): ?string
     {
@@ -44,6 +54,11 @@ final class Station
     public function setAccessibility(array $values): void
     {
         $this->Accessibility = $values;
+    }
+
+    public function setAddress(array $address): void
+    {
+        $this->address = $address;
     }
 
     public function setCrsCode(string $crsCode): void

@@ -36,8 +36,7 @@ it('parses a list of stations from XML', function () {
 
     expect($stations)
         ->toHaveCount(5)
-        ->each->toBeInstanceOf(Station::class)
-        ;
+        ->each->toBeInstanceOf(Station::class);
 });
 
 it('parses an empty list of stations from XML', function () {
@@ -112,3 +111,37 @@ it('throws an exception if the CRS code contains invalid characters', function (
 
     $parser->parseStation($data);
 })->throws(ValidationFailedException::class);
+
+it("returns a 5 line address for a station", function () {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Address>
+              <com:PostalAddress>
+                <add:A_5LineAddress>
+                  <add:Line>Aber station</add:Line>
+                  <add:Line>Nantgarw Road</add:Line>
+                  <add:Line>Aber</add:Line>
+                  <add:Line>Caerphilly</add:Line>
+                  <add:PostCode>CF83 1AQ</add:PostCode>
+                </add:A_5LineAddress>
+              </com:PostalAddress>
+            </Address>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    $address = $station->getAddress();
+
+    expect($address)->toMatchArray([
+        'Aber station',
+        'Nantgarw Road',
+        'Aber',
+        'Caerphilly',
+        'CF83 1AQ',
+    ]);
+});
