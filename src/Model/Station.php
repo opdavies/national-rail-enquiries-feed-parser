@@ -26,6 +26,11 @@ final class Station
     private string $CrsCode;
 
     /**
+     * @var array<string,string>
+     */
+    private array $informationSystems;
+
+    /**
      * @Assert\NotBlank
      */
     private string $Name;
@@ -38,6 +43,11 @@ final class Station
         ];
 
         return new StationAddress(...$addressLines);
+    }
+
+    public function getInformationServicesOpenText(): ?string
+    {
+        return Arr::get($this->informationSystems, 'InformationServicesOpen.com:Annotation.com:Note');
     }
 
     public function getAssistedTravelText(): ?string
@@ -74,6 +84,14 @@ final class Station
     public function setCrsCode(string $crsCode): void
     {
         $this->CrsCode = $crsCode;
+    }
+
+    /**
+     * @param array<string,mixed> $values
+     */
+    public function setInformationSystems(array $values): void
+    {
+        $this->informationSystems = $values;
     }
 
     public function setName(string $name): void

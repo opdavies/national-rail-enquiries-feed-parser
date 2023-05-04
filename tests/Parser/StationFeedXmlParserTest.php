@@ -145,3 +145,27 @@ it("returns a 5 line address for a station", function () {
     expect($address->line4)->toBe('Caerphilly');
     expect($address->postcode)->toBe('CF83 1AQ');
 });
+
+it('returns the InformationServicesOpen text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <InformationSystems>
+                <InformationAvailableFromStaff>-1</InformationAvailableFromStaff>
+                <InformationServicesOpen>
+                    <com:Annotation>
+                        <com:Note><![CDATA[Information available during ticket office opening times.]]></com:Note>
+                    </com:Annotation>
+                </InformationServicesOpen>
+            </InformationSystems>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getInformationServicesOpenText())
+        ->toBe('Information available during ticket office opening times.');
+});
