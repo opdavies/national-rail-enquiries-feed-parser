@@ -190,3 +190,26 @@ it('returns the SmartcardComments text', function() {
     expect($station->getSmartcardComments())
         ->toBe('<p>Load a pre-purchased season ticket onto a smartcard using the smartcard validator.</p>');
 });
+
+it('returns the PassengerServices CustomerService text', function() {
+    $data = <<<EOF
+    <Station>
+        <Name>Aber</Name>
+        <CrsCode>ABE</CrsCode>
+        <PassengerServices>
+          <CustomerService>
+            <com:Annotation>
+              <com:Note><![CDATA[<p>Contact our Customer Relations team directly via <a href="https://tfw.wales/help-and-contact/rail/contact-us">the Transport for Wales Website.</a></p>]]></com:Note>
+            </com:Annotation>
+          </CustomerService>
+        </PassengerServices>
+    </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getPassengerServicesCustomerServiceText())
+        ->toBe('<p>Contact our Customer Relations team directly via <a href="https://tfw.wales/help-and-contact/rail/contact-us">the Transport for Wales Website.</a></p>');
+});

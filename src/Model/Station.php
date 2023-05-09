@@ -39,6 +39,11 @@ final class Station
      */
     private string $Name;
 
+    /**
+     * @var array<string,mixed>
+     */
+    private array $PassengerServices;
+
     public function getAddress(): StationAddress {
         /** @var array<int,string> */
         $addressLines = [
@@ -72,6 +77,10 @@ final class Station
     public function getSmartcardComments(): string
     {
         return dot($this->fares)->get('SmartcardComments.com:Note');
+    }
+
+    public function getPassengerServicesCustomerServiceText(): string {
+        return dot($this->PassengerServices)->get('CustomerService.com:Annotation.com:Note');
     }
 
     /**
@@ -114,5 +123,13 @@ final class Station
     public function setName(string $name): void
     {
         $this->Name = $name;
+    }
+
+    /**
+     * @param array<string,mixed> $values
+     */
+    public function setPassengerServices(array $values): void
+    {
+        $this->PassengerServices = $values;
     }
 }
