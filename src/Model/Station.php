@@ -26,6 +26,11 @@ final class Station
     private string $CrsCode;
 
     /**
+     * @var array<string,mixed>
+     */
+    private array $fares;
+
+    /**
      * @var array<string,string>
      */
     private array $informationSystems;
@@ -65,6 +70,11 @@ final class Station
         return $this->Name;
     }
 
+    public function getSmartcardComments(): string
+    {
+        return dot($this->fares)->get('SmartcardComments.com:Note');
+    }
+
     /**
      * @param array<string,mixed> $values
      */
@@ -84,6 +94,14 @@ final class Station
     public function setCrsCode(string $crsCode): void
     {
         $this->CrsCode = $crsCode;
+    }
+
+    /**
+     * @param array<string,mixed> $values
+     */
+    public function setFares(array $values): void
+    {
+        $this->fares = $values;
     }
 
     /**

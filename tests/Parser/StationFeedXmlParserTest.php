@@ -169,3 +169,24 @@ it('returns the InformationServicesOpen text', function() {
     expect($station->getInformationServicesOpenText())
         ->toBe('Information available during ticket office opening times.');
 });
+
+it('returns the SmartcardComments text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Fares>
+                <SmartcardComments>
+                    <com:Note><![CDATA[<p>Load a pre-purchased season ticket onto a smartcard using the smartcard validator.</p>]]></com:Note>
+                </SmartcardComments>
+            </Fares>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getSmartcardComments())
+        ->toBe('<p>Load a pre-purchased season ticket onto a smartcard using the smartcard validator.</p>');
+});
