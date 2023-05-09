@@ -44,7 +44,8 @@ final class Station
      */
     private array $PassengerServices;
 
-    public function getAddress(): StationAddress {
+    public function getAddress(): StationAddress
+    {
         /** @var array<int,string> */
         $addressLines = [
             ...dot($this->address)->get('com:PostalAddress.add:A_5LineAddress.add:Line'),
@@ -79,7 +80,8 @@ final class Station
         return dot($this->fares)->get('SmartcardComments.com:Note');
     }
 
-    public function getPassengerServicesCustomerServiceText(): string {
+    public function getPassengerServicesCustomerServiceText(): string
+    {
         return dot($this->PassengerServices)->get('CustomerService.com:Annotation.com:Note');
     }
 
