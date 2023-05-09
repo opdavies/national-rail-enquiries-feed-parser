@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Opdavies\NationalRailEnquriesFeedParser\Model;
 
-use Illuminate\Support\Arr;
 use Opdavies\NationalRailEnquriesFeedParser\DataTransferObject\StationAddress;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -43,8 +42,8 @@ final class Station
     public function getAddress(): StationAddress {
         /** @var array<int,string> */
         $addressLines = [
-            ...Arr::get($this->address, 'com:PostalAddress.add:A_5LineAddress.add:Line'),
-            Arr::get($this->address, 'com:PostalAddress.add:A_5LineAddress.add:PostCode'),
+            ...dot($this->address)->get('com:PostalAddress.add:A_5LineAddress.add:Line'),
+            dot($this->address)->get('com:PostalAddress.add:A_5LineAddress.add:PostCode'),
         ];
 
         return new StationAddress(...$addressLines);
@@ -52,7 +51,7 @@ final class Station
 
     public function getInformationServicesOpenText(): ?string
     {
-        return Arr::get($this->informationSystems, 'InformationServicesOpen.com:Annotation.com:Note');
+        return dot($this->informationSystems)->get('InformationServicesOpen.com:Annotation.com:Note');
     }
 
     public function getAssistedTravelText(): ?string

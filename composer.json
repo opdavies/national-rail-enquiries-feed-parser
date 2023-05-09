@@ -18,7 +18,6 @@
         "adbario/php-dot-notation": "^3.1",
         "doctrine/annotations": "^1.13",
         "doctrine/collections": "^1.6",
-        "illuminate/support": "^9.52",
         "symfony/cache": "^4.4|^5.4",
         "symfony/property-access": "^4.4|^5.4",
         "symfony/serializer": "^4.4|^5.4",
