@@ -15,6 +15,11 @@ final class Station
     private array $address;
 
     /**
+     * @var array<int,string>
+     */
+    private array $airport;
+
+    /**
      * @var array<string,mixed>
      */
     private array $Accessibility;
@@ -63,6 +68,11 @@ final class Station
         ];
 
         return new StationAddress(...$addressLines);
+    }
+
+    public function getAirportText(): string
+    {
+        return dot($this->airport)->get('com:Annotation.com:Note');
     }
 
     public function getInformationServicesOpenText(): ?string
@@ -119,6 +129,14 @@ final class Station
     public function setAddress(array $address): void
     {
         $this->address = $address;
+    }
+
+    /**
+     * @param array<int,string> $value
+     */
+    public function setAirport(array $value): void
+    {
+        $this->airport = $value;
     }
 
     public function setCrsCode(string $crsCode): void
