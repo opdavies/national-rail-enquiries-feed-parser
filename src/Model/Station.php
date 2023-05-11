@@ -44,6 +44,11 @@ final class Station
      */
     private array $PassengerServices;
 
+    /**
+     * @var array<string,mixed>
+     */
+    private array $WiFi;
+
     public function getAddress(): StationAddress
     {
         /** @var array<int,string> */
@@ -83,6 +88,11 @@ final class Station
     public function getPassengerServicesCustomerServiceText(): string
     {
         return dot($this->PassengerServices)->get('CustomerService.com:Annotation.com:Note');
+    }
+
+    public function getWiFiText(): string
+    {
+        return dot($this->WiFi)->get('com:Annotation.com:Note');
     }
 
     /**
@@ -133,5 +143,13 @@ final class Station
     public function setPassengerServices(array $values): void
     {
         $this->PassengerServices = $values;
+    }
+
+    /**
+     * @param array<string,mixed> $values
+     */
+    public function setWiFi(array $values): void
+    {
+        $this->WiFi = $values;
     }
 }

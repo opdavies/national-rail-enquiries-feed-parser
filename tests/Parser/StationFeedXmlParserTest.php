@@ -213,3 +213,25 @@ it('returns the PassengerServices CustomerService text', function() {
     expect($station->getPassengerServicesCustomerServiceText())
         ->toBe('<p>Contact our Customer Relations team directly via <a href="https://tfw.wales/help-and-contact/rail/contact-us">the Transport for Wales Website.</a></p>');
 });
+
+it('returns the WiFi text from station facilities', function() {
+    $data = <<<EOF
+    <Station>
+        <Name>Aber</Name>
+        <CrsCode>ABE</CrsCode>
+        <WiFi>
+          <com:Annotation>
+            <com:Note><![CDATA[<p><a href="https://www.btwifi.co.uk/find/" target="_blank" rel="nofollow">Find WiFi Hotspots around Aber station</a></p>]]></com:Note>
+          </com:Annotation>
+          <com:Available>false</com:Available>
+        </WiFi>
+    </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getWiFiText())
+        ->toBe('<p><a href="https://www.btwifi.co.uk/find/" target="_blank" rel="nofollow">Find WiFi Hotspots around Aber station</a></p>');
+});
