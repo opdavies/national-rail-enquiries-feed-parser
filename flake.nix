@@ -11,8 +11,14 @@
       systems = [ "x86_64-linux" ];
 
       perSystem = { config, self', inputs', pkgs, system, ... }: {
+        formatter = pkgs.nixpkgs-fmt;
+
         devshells.default = {
-          packages = with pkgs; [ "php80" "php80Packages.composer" ];
+          packages = with pkgs; [
+            "nodePackages_latest.nodemon"
+            "php80"
+            "php80Packages.composer"
+          ];
         };
       };
     };
