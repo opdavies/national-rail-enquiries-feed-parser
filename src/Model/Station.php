@@ -115,6 +115,11 @@ final class Station
         return dot($this->PassengerServices)->get('CustomerService.com:Annotation.com:Note');
     }
 
+    public function getRailReplacementServicesText(): string
+    {
+        return dot($this->interchange)->get('RailReplacementServices.com:Annotation.com:Note');
+    }
+
     public function getStationAlert(): string
     {
         return dot($this->stationAlerts)->get('AlertText');
