@@ -390,3 +390,26 @@ it('returns the accessibility helpline text', function() {
     expect($station->getAccessibilityHelplineText())
         ->toBe('<p>We want everyone to travel with confidence. That is why, if you are planning on travelling on national rail services, you can request an assistance booking in advance - now up to 2 hours before your journey is due to start, any time of the day. For more information about Passenger Assist and how to request an assistance booking via Passenger Assist, please <a href="https://www.nationalrail.co.uk/stations_destinations/passenger-assist.aspx" title="">click here</a>.</p>');
 });
+
+it('returns the AccessiblePublicTelephones text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Accessibility>
+                <AccessiblePublicTelephones>
+                     <com:Annotation>
+                         <com:Note><![CDATA[<p>There are four payphones in the concourse and one each on platforms 1/2, 3/4 and 6/7.</p>]]></com:Note>
+                     </com:Annotation>
+                </AccessiblePublicTelephones>
+            </Accessibility>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getAccessiblePublicTelephonesText())
+        ->toBe('<p>There are four payphones in the concourse and one each on platforms 1/2, 3/4 and 6/7.</p>');
+});
