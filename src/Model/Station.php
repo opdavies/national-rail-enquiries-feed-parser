@@ -110,6 +110,11 @@ final class Station
         return $this->Name;
     }
 
+    public function getNationalKeyToiletsText(): string
+    {
+        return dot($this->Accessibility)->get('NationalKeyToilets.com:Location.com:Note');
+    }
+
     public function getOnwardTravelText(): string
     {
         return dot($this->interchange)->get('OnwardTravel.com:Annotation.com:Note');

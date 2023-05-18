@@ -413,3 +413,26 @@ it('returns the AccessiblePublicTelephones text', function() {
     expect($station->getAccessiblePublicTelephonesText())
         ->toBe('<p>There are four payphones in the concourse and one each on platforms 1/2, 3/4 and 6/7.</p>');
 });
+
+it('returns the NationalKeyToilets text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Accessibility>
+                <NationalKeyToilets>
+                    <com:Location>
+                        <com:Note><![CDATA[<p>The National Key/Accessible toilets are located in the East Subway near the lifts and on Platform 8; these toilets are operated by a RADAR key and are only available during staffing hours.</p>]]></com:Note>
+                    </com:Location>
+                </NationalKeyToilets>
+            </Accessibility>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getNationalKeyToiletsText())
+        ->toBe('<p>The National Key/Accessible toilets are located in the East Subway near the lifts and on Platform 8; these toilets are operated by a RADAR key and are only available during staffing hours.</p>');
+});
