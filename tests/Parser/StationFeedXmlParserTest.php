@@ -344,3 +344,26 @@ it('returns the rail replacement services text', function() {
     expect($station->getRailReplacementServicesText())
         ->toBe('<p>The rail replacement bus stop is at the rear car park (Penarth Road entrance).</p>');
 });
+
+it('returns the StaffHelpAvailable text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Accessibility>
+                <StaffHelpAvailable>
+                    <com:Annotation>
+                        <com:Note><![CDATA[<p>Monday to Friday 04:00 to 01:00</p><p>Saturday 04:00 to 00:30</p><p>Sunday 07:00 to 00:30</p>]]></com:Note>
+                    </com:Annotation>
+                </StaffHelpAvailable>
+            </Accessibility>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getStaffHelpAvailableText())
+        ->toBe('<p>Monday to Friday 04:00 to 01:00</p><p>Saturday 04:00 to 00:30</p><p>Sunday 07:00 to 00:30</p>');
+});
