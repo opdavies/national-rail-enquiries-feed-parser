@@ -64,6 +64,11 @@ final class Station
      */
     private array $WiFi;
 
+    public function getAccessibilityHelplineText(): string
+    {
+        return dot($this->Accessibility)->get('Helpline.com:Annotation.com:Note');
+    }
+
     public function getAddress(): StationAddress
     {
         /** @var array<int,string> */
