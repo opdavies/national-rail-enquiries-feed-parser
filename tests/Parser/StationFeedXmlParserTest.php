@@ -275,3 +275,26 @@ it('returns the airport text', function() {
     expect($station->getAirportText())
         ->toBe('<p>The T9 Airport Express coach service departs from the bus stop at the rear of the railway station.</p><p>The full timetable can be found <a href="http://www.trawscymru.info/t9/" title="">http://www.trawscymru.info/t9/</a>.  The journey time is 40 minutes.</p>');
 });
+
+it('returns the OnwardTravelText from the Interchange section', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Interchange>
+                <OnwardTravel>
+                    <com:Annotation>
+                        <com:Note><![CDATA[<p>There is currently no central bus station.  Bus services depart and arrive at stops around the city centre.  Click on the link to see <a href="http://www.cardiffbus.com/english/servicelisting.shtml#_subnav01" title="">a list of routes and timetables</a></p><p>Buy a Cardiff <em><strong>PlusBus</strong></em> ticket with your train ticket for discount-priced unlimited bus travel around the town. For details visit <a href="http://www.PlusBus.info" title="">www.PlusBus.info</a></p>]]></com:Note>
+                    </com:Annotation>
+                </OnwardTravel>
+            </Interchange>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getOnwardTravelText())
+        ->toBe('<p>There is currently no central bus station.  Bus services depart and arrive at stops around the city centre.  Click on the link to see <a href="http://www.cardiffbus.com/english/servicelisting.shtml#_subnav01" title="">a list of routes and timetables</a></p><p>Buy a Cardiff <em><strong>PlusBus</strong></em> ticket with your train ticket for discount-priced unlimited bus travel around the town. For details visit <a href="http://www.PlusBus.info" title="">www.PlusBus.info</a></p>');
+});

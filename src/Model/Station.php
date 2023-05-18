@@ -40,6 +40,11 @@ final class Station
     private array $informationSystems;
 
     /**
+     * @var array<int,string>
+     */
+    public array $interchange;
+
+    /**
      * @Assert\NotBlank
      */
     private string $Name;
@@ -93,6 +98,11 @@ final class Station
     public function getName(): string
     {
         return $this->Name;
+    }
+
+    public function getOnwardTravelText(): string
+    {
+        return dot($this->interchange)->get('OnwardTravel.com:Annotation.com:Note');
     }
 
     public function getSmartcardComments(): string
