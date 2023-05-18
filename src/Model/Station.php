@@ -120,6 +120,11 @@ final class Station
         return dot($this->stationAlerts)->get('AlertText');
     }
 
+    public function getTaxiRankText(): string
+    {
+        return dot($this->interchange)->get('TaxiRank.com:Annotation.com:Note');
+    }
+
     public function getWiFiText(): string
     {
         return dot($this->WiFi)->get('com:Annotation.com:Note');
