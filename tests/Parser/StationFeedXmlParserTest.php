@@ -701,3 +701,25 @@ it('returns the waiting room open and location text', function() {
     expect($station->getWaitingRoomOpenText())->toBe('<p>Closed until further notice.</p>');
     expect($station->getWaitingRoomLocationText())->toBe('<p>On platforms 1/2, 3/4, 6/7 and 8.</p>');
 });
+
+it('returns the name and operator name for a single car park', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Interchange>
+                <CarPark>
+                    <com:OperatorName><![CDATA[APCOA]]></com:OperatorName>
+                    <Name><![CDATA[Penarth Road]]></Name>
+                </CarPark>
+            </Interchange>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getCarParkName())->toBe('Penarth Road');
+    expect($station->getCarParkOperatorName())->toBe('APCOA');
+});

@@ -100,6 +100,16 @@ final class Station
         return dot($this->airport)->get('com:Annotation.com:Note');
     }
 
+    public function getCarParkName(): string
+    {
+        return dot($this->interchange)->get('CarPark.Name');
+    }
+
+    public function getCarParkOperatorName(): string
+    {
+        return dot($this->interchange)->get('CarPark.com:OperatorName');
+    }
+
     public function getCycleStorageAnnotationText(): string
     {
         return dot($this->interchange)->get('CycleStorage.Annotation.com:Note');
