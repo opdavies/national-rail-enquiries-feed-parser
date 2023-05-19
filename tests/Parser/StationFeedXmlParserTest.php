@@ -581,3 +581,26 @@ it('returns the first class lounge text', function() {
     expect($station->getFirstClassLoungeText())
         ->toBe('<p>Located on Platform 1 </p><p>All First Class tickets accepted.</p><p>A comfortable modern lounge, with information screens, complimentary refreshments and a dedicated customer host ready to serve you. </p><p>Wi-Fi is available.</p>');
 });
+
+it('returns the postbox location text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <StationFacilities>
+                <PostBox>
+                    <com:Location>
+                        <com:Note><![CDATA[<p>At the Penarth Road entrance and also in the main concourse.</p>]]></com:Note>
+                    </com:Location>
+                </PostBox>
+            </StationFacilities>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getPostBoxText())
+        ->toBe('<p>At the Penarth Road entrance and also in the main concourse.</p>');
+});

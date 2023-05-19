@@ -110,6 +110,11 @@ final class Station
         return dot($this->stationFacilities)->get('FirstClassLounge.com:Annotation.com:Note');
     }
 
+    public function getPostBoxText(): string
+    {
+        return dot($this->stationFacilities)->get('PostBox.com:Location.com:Note');
+    }
+
     public function getInformationServicesOpenText(): ?string
     {
         return dot($this->informationSystems)->get('InformationServicesOpen.com:Annotation.com:Note');
