@@ -673,3 +673,31 @@ it('returns the toilets location text', function() {
     expect($station->getToiletsLocationText())
         ->toBe('<p>The toilets are located on Platforms 1 to 8. The National Key toilets are located in the East Subway near the lifts and on Platform 8; these toilets are operated by a radar key and are only available during staffing hours.</p>');
 });
+
+it('returns the waiting room open and location text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <StationFacilities>
+                <WaitingRoom>
+                    <com:Open>
+                        <com:Annotation>
+                            <com:Note><![CDATA[<p>Closed until further notice.</p>]]></com:Note>
+                        </com:Annotation>
+                    </com:Open>
+                    <com:Location>
+                        <com:Note><![CDATA[<p>On platforms 1/2, 3/4, 6/7 and 8.</p>]]></com:Note>
+                    </com:Location>
+                </WaitingRoom>
+           </StationFacilities>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getWaitingRoomOpenText())->toBe('<p>Closed until further notice.</p>');
+    expect($station->getWaitingRoomLocationText())->toBe('<p>On platforms 1/2, 3/4, 6/7 and 8.</p>');
+});

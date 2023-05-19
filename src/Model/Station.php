@@ -210,6 +210,16 @@ final class Station
         return dot($this->stationFacilities)->get('Toilets.com:Location.com:Note');
     }
 
+    public function getWaitingRoomLocationText(): string
+    {
+        return dot($this->stationFacilities)->get('WaitingRoom.com:Location.com:Note');
+    }
+
+    public function getWaitingRoomOpenText(): string
+    {
+        return dot($this->stationFacilities)->get('WaitingRoom.com:Open.com:Annotation.com:Note');
+    }
+
     public function getWiFiText(): string
     {
         return dot($this->WiFi)->get('com:Annotation.com:Note');
