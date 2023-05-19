@@ -90,14 +90,19 @@ final class Station
         return new StationAddress(...$addressLines);
     }
 
+    public function getAirportText(): string
+    {
+        return dot($this->airport)->get('com:Annotation.com:Note');
+    }
+
     public function getAtmMachineLocationText(): string
     {
         return dot($this->stationFacilities)->get('AtmMachine.com:Location.com:Note');
     }
 
-    public function getAirportText(): string
+    public function getAssistedTravelText(): ?string
     {
-        return dot($this->airport)->get('com:Annotation.com:Note');
+        return dot($this->Accessibility)->get('Helpline.com_Annotation.com_Note');
     }
 
     public function getCarParkName(): string
@@ -108,6 +113,11 @@ final class Station
     public function getCarParkOperatorName(): string
     {
         return dot($this->interchange)->get('CarPark.com:OperatorName');
+    }
+
+    public function getCrsCode(): string
+    {
+        return $this->CrsCode;
     }
 
     public function getCycleStorageAnnotationText(): string
@@ -125,24 +135,9 @@ final class Station
         return dot($this->stationFacilities)->get('FirstClassLounge.com:Annotation.com:Note');
     }
 
-    public function getPostBoxText(): string
-    {
-        return dot($this->stationFacilities)->get('PostBox.com:Location.com:Note');
-    }
-
     public function getInformationServicesOpenText(): ?string
     {
         return dot($this->informationSystems)->get('InformationServicesOpen.com:Annotation.com:Note');
-    }
-
-    public function getAssistedTravelText(): ?string
-    {
-        return dot($this->Accessibility)->get('Helpline.com_Annotation.com_Note');
-    }
-
-    public function getCrsCode(): string
-    {
-        return $this->CrsCode;
     }
 
     public function getName(): string
@@ -160,14 +155,14 @@ final class Station
         return dot($this->interchange)->get('OnwardTravel.com:Annotation.com:Note');
     }
 
-    public function getSmartcardComments(): string
-    {
-        return dot($this->fares)->get('SmartcardComments.com:Note');
-    }
-
     public function getPassengerServicesCustomerServiceText(): string
     {
         return dot($this->PassengerServices)->get('CustomerService.com:Annotation.com:Note');
+    }
+
+    public function getPostBoxText(): string
+    {
+        return dot($this->stationFacilities)->get('PostBox.com:Location.com:Note');
     }
 
     public function getRailReplacementServicesText(): string
@@ -180,14 +175,19 @@ final class Station
         return dot($this->stationFacilities)->get('Shops.com:Annotation.com:Note');
     }
 
-    public function getStationAlert(): string
+    public function getSmartcardComments(): string
     {
-        return dot($this->stationAlerts)->get('AlertText');
+        return dot($this->fares)->get('SmartcardComments.com:Note');
     }
 
     public function getStaffHelpAvailableText(): string
     {
         return dot($this->Accessibility)->get('StaffHelpAvailable.com:Annotation.com:Note');
+    }
+
+    public function getStationAlert(): string
+    {
+        return dot($this->stationAlerts)->get('AlertText');
     }
 
     public function getStationBuffetText(): string
