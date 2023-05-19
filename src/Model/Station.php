@@ -205,6 +205,11 @@ final class Station
         return dot($this->fares)->get('TicketOffice.com:Location.com:Note');
     }
 
+    public function getToiletsLocationText(): string
+    {
+        return dot($this->stationFacilities)->get('Toilets.com:Location.com:Note');
+    }
+
     public function getWiFiText(): string
     {
         return dot($this->WiFi)->get('com:Annotation.com:Note');

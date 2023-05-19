@@ -650,3 +650,26 @@ it('returns the shops text', function() {
     expect($station->getShopsText())
         ->toBe('<p>News agent and convenience store</p>');
 });
+
+it('returns the toilets location text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <StationFacilities>
+                <Toilets>
+                    <com:Location>
+                        <com:Note><![CDATA[<p>The toilets are located on Platforms 1 to 8. The National Key toilets are located in the East Subway near the lifts and on Platform 8; these toilets are operated by a radar key and are only available during staffing hours.</p>]]></com:Note>
+                    </com:Location>
+                </Toilets>
+           </StationFacilities>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getToiletsLocationText())
+        ->toBe('<p>The toilets are located on Platforms 1 to 8. The National Key toilets are located in the East Subway near the lifts and on Platform 8; these toilets are operated by a radar key and are only available during staffing hours.</p>');
+});
