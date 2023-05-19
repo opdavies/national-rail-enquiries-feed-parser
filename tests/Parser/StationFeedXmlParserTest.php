@@ -552,3 +552,26 @@ it('returns the cycle storage location text', function() {
     expect($station->getCycleStorageLocationText())
         ->toBe('<p>East end of platforms 1 and 2, 3 and 4, 6 and 7 - also at the front and rear of the station.</p>');
 });
+
+it('returns the station buffet text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <StationFacilities>
+                <StationBuffet>
+                    <com:Annotation>
+                        <com:Note><![CDATA[<p>Cold drinks vending machine.</p><p>Hot drinks vending machine.</p><p>Food vending machine.</p><p>Food outlet (Seating available).</p>]]></com:Note>
+                    </com:Annotation>
+                </StationBuffet>
+            </StationFacilities>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getStationBuffetText())
+        ->toBe('<p>Cold drinks vending machine.</p><p>Hot drinks vending machine.</p><p>Food vending machine.</p><p>Food outlet (Seating available).</p>');
+});

@@ -62,6 +62,11 @@ final class Station
     /**
      * @var array<string,mixed>
      */
+    public array $stationFacilities;
+
+    /**
+     * @var array<string,mixed>
+     */
     private array $WiFi;
 
     public function getAccessiblePublicTelephonesText(): string
@@ -153,6 +158,11 @@ final class Station
     public function getStaffHelpAvailableText(): string
     {
         return dot($this->Accessibility)->get('StaffHelpAvailable.com:Annotation.com:Note');
+    }
+
+    public function getStationBuffetText(): string
+    {
+        return dot($this->stationFacilities)->get('StationBuffet.com:Annotation.com:Note');
     }
 
     public function getStepFreeAccessText(): string
