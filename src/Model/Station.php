@@ -12,32 +12,32 @@ final class Station
     /**
      * @var array<int,string>
      */
-    private array $address;
+    public array $address;
 
     /**
      * @var array<int,string>
      */
-    private array $airport;
+    public array $airport;
 
     /**
      * @var array<string,mixed>
      */
-    private array $accessibility;
+    public array $accessibility;
 
     /**
      * @Assert\Regex("/^[A-Z]{3}$/")
      */
-    private string $crsCode;
+    public string $crsCode;
 
     /**
      * @var array<string,mixed>
      */
-    private array $fares;
+    public array $fares;
 
     /**
      * @var array<string,string>
      */
-    private array $informationSystems;
+    public array $informationSystems;
 
     /**
      * @var array<int,string>
@@ -47,17 +47,17 @@ final class Station
     /**
      * @Assert\NotBlank
      */
-    private string $name;
+    public string $name;
 
     /**
      * @var array<string,mixed>
      */
-    private array $passengerServices;
+    public array $passengerServices;
 
     /**
      * @var array<string,mixed>
      */
-    private array $stationAlerts;
+    public array $stationAlerts;
 
     /**
      * @var array<string,mixed>
@@ -67,7 +67,7 @@ final class Station
     /**
      * @var array<string,mixed>
      */
-    private array $wiFi;
+    public array $wiFi;
 
     public function getAccessiblePublicTelephonesText(): string
     {
@@ -233,79 +233,5 @@ final class Station
     public function getWiFiText(): string
     {
         return dot($this->wiFi)->get('com:Annotation.com:Note');
-    }
-
-    /**
-     * @param array<string,mixed> $values
-     */
-    public function setAccessibility(array $values): void
-    {
-        $this->accessibility = $values;
-    }
-
-    /**
-     * @param array<int,string> $address
-     */
-    public function setAddress(array $address): void
-    {
-        $this->address = $address;
-    }
-
-    /**
-     * @param array<int,string> $value
-     */
-    public function setAirport(array $value): void
-    {
-        $this->airport = $value;
-    }
-
-    public function setCrsCode(string $crsCode): void
-    {
-        $this->crsCode = $crsCode;
-    }
-
-    /**
-     * @param array<string,mixed> $values
-     */
-    public function setFares(array $values): void
-    {
-        $this->fares = $values;
-    }
-
-    /**
-     * @param array<string,mixed> $values
-     */
-    public function setInformationSystems(array $values): void
-    {
-        $this->informationSystems = $values;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @param array<string,mixed> $values
-     */
-    public function setPassengerServices(array $values): void
-    {
-        $this->passengerServices = $values;
-    }
-
-    /**
-     * @param array<string,mixed> $values
-     */
-    public function setStationAlerts(array $values): void
-    {
-        $this->stationAlerts = $values;
-    }
-
-    /**
-     * @param array<string,mixed> $values
-     */
-    public function setWiFi(array $values): void
-    {
-        $this->wiFi = $values;
     }
 }
