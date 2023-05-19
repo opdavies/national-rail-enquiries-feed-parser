@@ -160,6 +160,11 @@ final class Station
         return dot($this->Accessibility)->get('TicketGates.com:Annotation.com:Note');
     }
 
+    public function getTicketOfficeLocationText(): string
+    {
+        return dot($this->fares)->get('TicketOffice.com:Location.com:Note');
+    }
+
     public function getWiFiText(): string
     {
         return dot($this->WiFi)->get('com:Annotation.com:Note');

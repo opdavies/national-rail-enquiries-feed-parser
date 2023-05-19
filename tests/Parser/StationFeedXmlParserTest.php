@@ -483,3 +483,26 @@ it('returns the TicketGates text', function() {
     expect($station->getTicketGatesText())
         ->toBe('<p>Accessible gate available at each set of ticket gates</p>');
 });
+
+it('returns the ticket office location text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Fares>
+                <TicketOffice>
+                    <com:Location>
+                        <com:Note><![CDATA[<p>At the Penarth Road entrance and on the concourse.</p>]]></com:Note>
+                    </com:Location>
+                </TicketOffice>
+            </Fares>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getTicketOfficeLocationText())
+        ->toBe('<p>At the Penarth Road entrance and on the concourse.</p>');
+});
