@@ -575,3 +575,26 @@ it('returns the station buffet text', function() {
     expect($station->getStationBuffetText())
         ->toBe('<p>Cold drinks vending machine.</p><p>Hot drinks vending machine.</p><p>Food vending machine.</p><p>Food outlet (Seating available).</p>');
 });
+
+it('returns the first class lounge text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <StationFacilities>
+                <FirstClassLounge>
+                    <com:Annotation>
+                        <com:Note><![CDATA[<p>Located on Platform 1 </p><p>All First Class tickets accepted.</p><p>A comfortable modern lounge, with information screens, complimentary refreshments and a dedicated customer host ready to serve you. </p><p>Wi-Fi is available.</p>]]></com:Note>
+                    </com:Annotation>
+                </FirstClassLounge>
+            </StationFacilities>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getFirstClassLoungeText())
+        ->toBe('<p>Located on Platform 1 </p><p>All First Class tickets accepted.</p><p>A comfortable modern lounge, with information screens, complimentary refreshments and a dedicated customer host ready to serve you. </p><p>Wi-Fi is available.</p>');
+});
