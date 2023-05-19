@@ -145,6 +145,11 @@ final class Station
         return dot($this->Accessibility)->get('StaffHelpAvailable.com:Annotation.com:Note');
     }
 
+    public function getStepFreeAccessText(): string
+    {
+        return dot($this->Accessibility)->get('StepFreeAccess.com:Annotation.com:Note');
+    }
+
     public function getTaxiRankText(): string
     {
         return dot($this->interchange)->get('TaxiRank.com:Annotation.com:Note');

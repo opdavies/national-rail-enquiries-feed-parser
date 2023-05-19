@@ -436,3 +436,27 @@ it('returns the NationalKeyToilets text', function() {
     expect($station->getNationalKeyToiletsText())
         ->toBe('<p>The National Key/Accessible toilets are located in the East Subway near the lifts and on Platform 8; these toilets are operated by a RADAR key and are only available during staffing hours.</p>');
 });
+
+it('returns the StepFreeAccess text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Accessibility>
+                <StepFreeAccess>
+                    <com:Annotation>
+                        <com:Note><![CDATA[<p>Category A.</p><p>Step free access is available to Platforms 0 to 8.</p>]]></com:Note>
+                    </com:Annotation>
+                    <Coverage>wholeStation</Coverage>
+                </StepFreeAccess>
+            </Accessibility>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getStepFreeAccessText())
+        ->toBe('<p>Category A.</p><p>Step free access is available to Platforms 0 to 8.</p>');
+});
