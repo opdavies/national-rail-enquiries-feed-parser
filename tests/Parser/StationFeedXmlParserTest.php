@@ -627,3 +627,26 @@ it('returns the ATM machine location text', function() {
     expect($station->getAtmMachineLocationText())
         ->toBe('<p>Located outside the main entrance.</p>');
 });
+
+it('returns the shops text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <StationFacilities>
+                <Shops>
+                    <com:Annotation>
+                        <com:Note><![CDATA[<p>News agent and convenience store</p>]]></com:Note>
+                    </com:Annotation>
+                </Shops>
+           </StationFacilities>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getShopsText())
+        ->toBe('<p>News agent and convenience store</p>');
+});
