@@ -604,3 +604,26 @@ it('returns the postbox location text', function() {
     expect($station->getPostBoxText())
         ->toBe('<p>At the Penarth Road entrance and also in the main concourse.</p>');
 });
+
+it('returns the ATM machine location text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <StationFacilities>
+                <AtmMachine>
+                    <com:Location>
+                        <com:Note><![CDATA[<p>Located outside the main entrance.</p>]]></com:Note>
+                    </com:Location>
+                </AtmMachine>
+           </StationFacilities>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getAtmMachineLocationText())
+        ->toBe('<p>Located outside the main entrance.</p>');
+});

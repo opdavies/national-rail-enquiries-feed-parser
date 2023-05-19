@@ -90,6 +90,11 @@ final class Station
         return new StationAddress(...$addressLines);
     }
 
+    public function getAtmMachineLocationText(): string
+    {
+        return dot($this->stationFacilities)->get('AtmMachine.com:Location.com:Note');
+    }
+
     public function getAirportText(): string
     {
         return dot($this->airport)->get('com:Annotation.com:Note');
