@@ -90,6 +90,16 @@ final class Station
         return dot($this->airport)->get('com:Annotation.com:Note');
     }
 
+    public function getCycleStorageAnnotationText(): string
+    {
+        return dot($this->interchange)->get('CycleStorage.Annotation.com:Note');
+    }
+
+    public function getCycleStorageLocationText(): string
+    {
+        return dot($this->interchange)->get('CycleStorage.Location.com:Note');
+    }
+
     public function getInformationServicesOpenText(): ?string
     {
         return dot($this->informationSystems)->get('InformationServicesOpen.com:Annotation.com:Note');

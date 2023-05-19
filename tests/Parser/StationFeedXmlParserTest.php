@@ -506,3 +506,49 @@ it('returns the ticket office location text', function() {
     expect($station->getTicketOfficeLocationText())
         ->toBe('<p>At the Penarth Road entrance and on the concourse.</p>');
 });
+
+it('returns the cycle storage annotation text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Interchange>
+                <CycleStorage>
+                    <Annotation>
+                        <com:Note><![CDATA[<p>Sheltered stands are available on each platform.</p>]]></com:Note>
+                    </Annotation>
+                </CycleStorage>
+            </Interchange>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getCycleStorageAnnotationText())
+        ->toBe('<p>Sheltered stands are available on each platform.</p>');
+});
+
+it('returns the cycle storage location text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Interchange>
+                <CycleStorage>
+                    <Location>
+                        <com:Note><![CDATA[<p>East end of platforms 1 and 2, 3 and 4, 6 and 7 - also at the front and rear of the station.</p>]]></com:Note>
+                    </Location>
+                </CycleStorage>
+            </Interchange>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getCycleStorageLocationText())
+        ->toBe('<p>East end of platforms 1 and 2, 3 and 4, 6 and 7 - also at the front and rear of the station.</p>');
+});
