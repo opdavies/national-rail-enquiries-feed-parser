@@ -460,3 +460,26 @@ it('returns the StepFreeAccess text', function() {
     expect($station->getStepFreeAccessText())
         ->toBe('<p>Category A.</p><p>Step free access is available to Platforms 0 to 8.</p>');
 });
+
+it('returns the TicketGates text', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Accessibility>
+                <TicketGates>
+                    <com:Annotation>
+                        <com:Note><![CDATA[<p>Accessible gate available at each set of ticket gates</p>]]></com:Note>
+                    </com:Annotation>
+                </TicketGates>
+            </Accessibility>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getTicketGatesText())
+        ->toBe('<p>Accessible gate available at each set of ticket gates</p>');
+});

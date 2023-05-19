@@ -155,6 +155,11 @@ final class Station
         return dot($this->interchange)->get('TaxiRank.com:Annotation.com:Note');
     }
 
+    public function getTicketGatesText(): string
+    {
+        return dot($this->Accessibility)->get('TicketGates.com:Annotation.com:Note');
+    }
+
     public function getWiFiText(): string
     {
         return dot($this->WiFi)->get('com:Annotation.com:Note');
