@@ -22,12 +22,12 @@ final class Station
     /**
      * @var array<string,mixed>
      */
-    private array $Accessibility;
+    private array $accessibility;
 
     /**
      * @Assert\Regex("/^[A-Z]{3}$/")
      */
-    private string $CrsCode;
+    private string $crsCode;
 
     /**
      * @var array<string,mixed>
@@ -47,12 +47,12 @@ final class Station
     /**
      * @Assert\NotBlank
      */
-    private string $Name;
+    private string $name;
 
     /**
      * @var array<string,mixed>
      */
-    private array $PassengerServices;
+    private array $passengerServices;
 
     /**
      * @var array<string,mixed>
@@ -67,16 +67,16 @@ final class Station
     /**
      * @var array<string,mixed>
      */
-    private array $WiFi;
+    private array $wiFi;
 
     public function getAccessiblePublicTelephonesText(): string
     {
-        return dot($this->Accessibility)->get('AccessiblePublicTelephones.com:Annotation.com:Note');
+        return dot($this->accessibility)->get('AccessiblePublicTelephones.com:Annotation.com:Note');
     }
 
     public function getAccessibilityHelplineText(): string
     {
-        return dot($this->Accessibility)->get('Helpline.com:Annotation.com:Note');
+        return dot($this->accessibility)->get('Helpline.com:Annotation.com:Note');
     }
 
     public function getAddress(): StationAddress
@@ -102,7 +102,7 @@ final class Station
 
     public function getAssistedTravelText(): ?string
     {
-        return dot($this->Accessibility)->get('Helpline.com_Annotation.com_Note');
+        return dot($this->accessibility)->get('Helpline.com_Annotation.com_Note');
     }
 
     public function getCarParkName(): string
@@ -117,7 +117,7 @@ final class Station
 
     public function getCrsCode(): string
     {
-        return $this->CrsCode;
+        return $this->crsCode;
     }
 
     public function getCycleStorageAnnotationText(): string
@@ -142,12 +142,12 @@ final class Station
 
     public function getName(): string
     {
-        return $this->Name;
+        return $this->name;
     }
 
     public function getNationalKeyToiletsText(): string
     {
-        return dot($this->Accessibility)->get('NationalKeyToilets.com:Location.com:Note');
+        return dot($this->accessibility)->get('NationalKeyToilets.com:Location.com:Note');
     }
 
     public function getOnwardTravelText(): string
@@ -157,7 +157,7 @@ final class Station
 
     public function getPassengerServicesCustomerServiceText(): string
     {
-        return dot($this->PassengerServices)->get('CustomerService.com:Annotation.com:Note');
+        return dot($this->passengerServices)->get('CustomerService.com:Annotation.com:Note');
     }
 
     public function getPostBoxText(): string
@@ -182,7 +182,7 @@ final class Station
 
     public function getStaffHelpAvailableText(): string
     {
-        return dot($this->Accessibility)->get('StaffHelpAvailable.com:Annotation.com:Note');
+        return dot($this->accessibility)->get('StaffHelpAvailable.com:Annotation.com:Note');
     }
 
     public function getStationAlert(): string
@@ -197,7 +197,7 @@ final class Station
 
     public function getStepFreeAccessText(): string
     {
-        return dot($this->Accessibility)->get('StepFreeAccess.com:Annotation.com:Note');
+        return dot($this->accessibility)->get('StepFreeAccess.com:Annotation.com:Note');
     }
 
     public function getTaxiRankText(): string
@@ -207,7 +207,7 @@ final class Station
 
     public function getTicketGatesText(): string
     {
-        return dot($this->Accessibility)->get('TicketGates.com:Annotation.com:Note');
+        return dot($this->accessibility)->get('TicketGates.com:Annotation.com:Note');
     }
 
     public function getTicketOfficeLocationText(): string
@@ -232,7 +232,7 @@ final class Station
 
     public function getWiFiText(): string
     {
-        return dot($this->WiFi)->get('com:Annotation.com:Note');
+        return dot($this->wiFi)->get('com:Annotation.com:Note');
     }
 
     /**
@@ -240,7 +240,7 @@ final class Station
      */
     public function setAccessibility(array $values): void
     {
-        $this->Accessibility = $values;
+        $this->accessibility = $values;
     }
 
     /**
@@ -261,7 +261,7 @@ final class Station
 
     public function setCrsCode(string $crsCode): void
     {
-        $this->CrsCode = $crsCode;
+        $this->crsCode = $crsCode;
     }
 
     /**
@@ -282,7 +282,7 @@ final class Station
 
     public function setName(string $name): void
     {
-        $this->Name = $name;
+        $this->name = $name;
     }
 
     /**
@@ -290,7 +290,7 @@ final class Station
      */
     public function setPassengerServices(array $values): void
     {
-        $this->PassengerServices = $values;
+        $this->passengerServices = $values;
     }
 
     /**
@@ -306,6 +306,6 @@ final class Station
      */
     public function setWiFi(array $values): void
     {
-        $this->WiFi = $values;
+        $this->wiFi = $values;
     }
 }
