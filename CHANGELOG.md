@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+None.
+
+## [0.3.1] - 2023-05-23
+
 ### Changed
 
 - Serializer: re-order methods alphabetically.
@@ -94,8 +98,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Serializer: remove the `StationSerializer`.
 
-[unreleased]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.3.0...HEAD
-[0.3.0]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.2.0...0.3.0
+[unreleased]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.3.1...HEAD
+[0.3.1]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.3.0...0.3.1
+[0.3.0]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.2.0...0.3.1
 [0.2.0]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.1.5...0.2.0
 [0.1.5]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.1.4...0.1.5
 [0.1.4]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.1.3...0.1.4
