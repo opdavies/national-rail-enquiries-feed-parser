@@ -227,6 +227,6 @@ final class Station
 
     public function getWiFiText(): string
     {
-        return dot($this->wiFi)->get('com:Annotation.com:Note');
+        return dot($this->stationFacilities)->get('WiFi.com:Annotation.com:Note');
     }
 }

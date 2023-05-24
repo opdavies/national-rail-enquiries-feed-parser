@@ -219,12 +219,14 @@ it('returns the WiFi text from station facilities', function() {
     <Station>
         <Name>Aber</Name>
         <CrsCode>ABE</CrsCode>
-        <WiFi>
-          <com:Annotation>
-            <com:Note><![CDATA[<p><a href="https://www.btwifi.co.uk/find/" target="_blank" rel="nofollow">Find WiFi Hotspots around Aber station</a></p>]]></com:Note>
-          </com:Annotation>
-          <com:Available>false</com:Available>
-        </WiFi>
+        <StationFacilities>
+            <WiFi>
+              <com:Annotation>
+                <com:Note><![CDATA[<p><a href="https://www.btwifi.co.uk/find/" target="_blank" rel="nofollow">Find WiFi Hotspots around Aber station</a></p>]]></com:Note>
+              </com:Annotation>
+              <com:Available>false</com:Available>
+            </WiFi>
+        </StationFacilities>
     </Station>
     EOF;
 
