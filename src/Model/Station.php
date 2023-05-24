@@ -15,11 +15,6 @@ final class Station
     public array $address;
 
     /**
-     * @var array<int,string>
-     */
-    public array $airport;
-
-    /**
      * @var array<string,mixed>
      */
     public array $accessibility;
@@ -92,7 +87,7 @@ final class Station
 
     public function getAirportText(): string
     {
-        return dot($this->airport)->get('com:Annotation.com:Note');
+        return dot($this->interchange)->get('Airport.com:Annotation.com:Note');
     }
 
     public function getAtmMachineLocationText(): string

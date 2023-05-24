@@ -260,11 +260,13 @@ it('returns the airport text', function() {
         <Station>
             <Name>Aber</Name>
             <CrsCode>ABE</CrsCode>
-            <Airport>
-              <com:Annotation>
-                <com:Note><![CDATA[<p>The T9 Airport Express coach service departs from the bus stop at the rear of the railway station.</p><p>The full timetable can be found <a href="http://www.trawscymru.info/t9/" title="">http://www.trawscymru.info/t9/</a>.  The journey time is 40 minutes.</p>]]></com:Note>
-              </com:Annotation>
-            </Airport>
+            <Interchange>
+                <Airport>
+                  <com:Annotation>
+                    <com:Note><![CDATA[<p>The T9 Airport Express coach service departs from the bus stop at the rear of the railway station.</p><p>The full timetable can be found <a href="http://www.trawscymru.info/t9/" title="">http://www.trawscymru.info/t9/</a>.  The journey time is 40 minutes.</p>]]></com:Note>
+                  </com:Annotation>
+                </Airport>
+            </Interchange>
         </Station>
     EOF;
 
