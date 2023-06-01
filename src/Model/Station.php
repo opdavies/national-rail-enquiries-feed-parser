@@ -178,7 +178,7 @@ final class Station
         return dot($this->stationFacilities)->get('Shops.com:Annotation.com:Note');
     }
 
-   public function getSmartcardComments(): ?string
+    public function getSmartcardComments(): ?string
     {
         return dot($this->fares)->get('SmartcardComments.com:Note');
     }
