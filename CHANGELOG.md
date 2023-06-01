@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Parser: Airport text is within `Interchange`.
 - Parser: WiFi text is within `StationFacilities`.
+- Parser: not all station addresses have five lines. If so, return a null value for the missing line.
 
 ## [0.3.1] - 2023-05-23
 

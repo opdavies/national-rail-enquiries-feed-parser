@@ -727,3 +727,32 @@ it('returns the name and operator name for a single car park', function() {
     expect($station->getCarParkName())->toBe('Penarth Road');
     expect($station->getCarParkOperatorName())->toBe('APCOA');
 });
+
+test('some 5 line addresses have only four lines', function() {
+    $data = <<<EOF
+        <Station>
+            <Name>Wrexham</Name>
+            <CrsCode>WRE</CrsCode>
+            <Address>
+              <com:PostalAddress>
+                <add:A_5LineAddress>
+                  <add:Line>Wrexham General Station</add:Line>
+                  <add:Line>Station Approach</add:Line>
+                  <add:Line>Wrexham</add:Line>
+                  <add:PostCode>LL11 2AA</add:PostCode>
+                </add:A_5LineAddress>
+              </com:PostalAddress>
+            </Address>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getAddress()->line1)->toBe('Wrexham General Station');
+    expect($station->getAddress()->line2)->toBe('Station Approach');
+    expect($station->getAddress()->line3)->toBe('Wrexham');
+    expect($station->getAddress()->line4)->toBeNull();
+    expect($station->getAddress()->postcode)->toBe('LL11 2AA');
+});

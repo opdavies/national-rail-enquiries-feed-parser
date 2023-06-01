@@ -76,9 +76,17 @@ final class Station
 
     public function getAddress(): StationAddress
     {
+        $lines = dot($this->address)->get('com:PostalAddress.add:A_5LineAddress.add:Line');
+
+        // Some 5-line addresses have only four lines (including the postcode).
+        // If this is the case, add a blank line so there is the expected number of lines.
+        if (count($lines) === 3) {
+            $lines[] = null;
+        }
+
         /** @var array<int,string> */
         $addressLines = [
-            ...dot($this->address)->get('com:PostalAddress.add:A_5LineAddress.add:Line'),
+            ...$lines,
             dot($this->address)->get('com:PostalAddress.add:A_5LineAddress.add:PostCode'),
         ];
 
