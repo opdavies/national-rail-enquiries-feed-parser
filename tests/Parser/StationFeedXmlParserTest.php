@@ -756,3 +756,48 @@ test('some 5 line addresses have only four lines', function() {
     expect($station->getAddress()->line4)->toBeNull();
     expect($station->getAddress()->postcode)->toBe('LL11 2AA');
 });
+
+it('returns a null value for text values if they are not present', function() {
+    $data = <<<EOF
+        <Station>
+            <CrsCode>CDF</CrsCode>
+            <Name>Cardiff Central</Name>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station)->toBeInstanceOf(Station::class);
+
+    expect($station->getAccessiblePublicTelephonesText())->toBeNull();
+    expect($station->getAccessibilityHelplineText())->toBeNull();
+    expect($station->getAirportText())->toBeNull();
+    expect($station->getAtmMachineLocationText())->toBeNull();
+    expect($station->getAssistedTravelText())->toBeNull();
+    expect($station->getCarParkName())->toBeNull();
+    expect($station->getCarParkOperatorName())->toBeNull();
+    expect($station->getCycleStorageAnnotationText())->toBeNull();
+    expect($station->getCycleStorageLocationText())->toBeNull();
+    expect($station->getFirstClassLoungeText())->toBeNull();
+    expect($station->getInformationServicesOpenText())->toBeNull();
+    expect($station->getNationalKeyToiletsText())->toBeNull();
+    expect($station->getOnwardTravelText())->toBeNull();
+    expect($station->getPassengerServicesCustomerServiceText())->toBeNull();
+    expect($station->getPostBoxText())->toBeNull();
+    expect($station->getRailReplacementServicesText())->toBeNull();
+    expect($station->getShopsText())->toBeNull();
+    expect($station->getSmartcardComments())->toBeNull();
+    expect($station->getStaffHelpAvailableText())->toBeNull();
+    expect($station->getStationAlert())->toBeNull();
+    expect($station->getStationBuffetText())->toBeNull();
+    expect($station->getStepFreeAccessText())->toBeNull();
+    expect($station->getTaxiRankText())->toBeNull();
+    expect($station->getTicketGatesText())->toBeNull();
+    expect($station->getTicketOfficeLocationText())->toBeNull();
+    expect($station->getToiletsLocationText())->toBeNull();
+    expect($station->getWaitingRoomLocationText())->toBeNull();
+    expect($station->getWaitingRoomOpenText())->toBeNull();
+    expect($station->getWiFiText())->toBeNull();
+});

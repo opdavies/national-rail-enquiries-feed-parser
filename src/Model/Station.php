@@ -17,7 +17,7 @@ final class Station
     /**
      * @var array<string,mixed>
      */
-    public array $accessibility;
+    public array $accessibility = [];
 
     /**
      * @Assert\Regex("/^[A-Z]{3}$/")
@@ -27,17 +27,17 @@ final class Station
     /**
      * @var array<string,mixed>
      */
-    public array $fares;
+    public array $fares = [];
 
     /**
      * @var array<string,string>
      */
-    public array $informationSystems;
+    public array $informationSystems = [];
 
     /**
      * @var array<int,string>
      */
-    public array $interchange;
+    public array $interchange = [];
 
     /**
      * @Assert\NotBlank
@@ -47,29 +47,29 @@ final class Station
     /**
      * @var array<string,mixed>
      */
-    public array $passengerServices;
+    public array $passengerServices = [];
 
     /**
      * @var array<string,mixed>
      */
-    public array $stationAlerts;
+    public array $stationAlerts = [];
 
     /**
      * @var array<string,mixed>
      */
-    public array $stationFacilities;
+    public array $stationFacilities = [];
 
     /**
      * @var array<string,mixed>
      */
     public array $wiFi;
 
-    public function getAccessiblePublicTelephonesText(): string
+    public function getAccessiblePublicTelephonesText(): ?string
     {
         return dot($this->accessibility)->get('AccessiblePublicTelephones.com:Annotation.com:Note');
     }
 
-    public function getAccessibilityHelplineText(): string
+    public function getAccessibilityHelplineText(): ?string
     {
         return dot($this->accessibility)->get('Helpline.com:Annotation.com:Note');
     }
@@ -93,12 +93,12 @@ final class Station
         return new StationAddress(...$addressLines);
     }
 
-    public function getAirportText(): string
+    public function getAirportText(): ?string
     {
         return dot($this->interchange)->get('Airport.com:Annotation.com:Note');
     }
 
-    public function getAtmMachineLocationText(): string
+    public function getAtmMachineLocationText(): ?string
     {
         return dot($this->stationFacilities)->get('AtmMachine.com:Location.com:Note');
     }
@@ -108,12 +108,12 @@ final class Station
         return dot($this->accessibility)->get('Helpline.com_Annotation.com_Note');
     }
 
-    public function getCarParkName(): string
+    public function getCarParkName(): ?string
     {
         return dot($this->interchange)->get('CarPark.Name');
     }
 
-    public function getCarParkOperatorName(): string
+    public function getCarParkOperatorName(): ?string
     {
         return dot($this->interchange)->get('CarPark.com:OperatorName');
     }
@@ -123,17 +123,17 @@ final class Station
         return $this->crsCode;
     }
 
-    public function getCycleStorageAnnotationText(): string
+    public function getCycleStorageAnnotationText(): ?string
     {
         return dot($this->interchange)->get('CycleStorage.Annotation.com:Note');
     }
 
-    public function getCycleStorageLocationText(): string
+    public function getCycleStorageLocationText(): ?string
     {
         return dot($this->interchange)->get('CycleStorage.Location.com:Note');
     }
 
-    public function getFirstClassLoungeText(): string
+    public function getFirstClassLoungeText(): ?string
     {
         return dot($this->stationFacilities)->get('FirstClassLounge.com:Annotation.com:Note');
     }
@@ -148,92 +148,92 @@ final class Station
         return $this->name;
     }
 
-    public function getNationalKeyToiletsText(): string
+    public function getNationalKeyToiletsText(): ?string
     {
         return dot($this->accessibility)->get('NationalKeyToilets.com:Location.com:Note');
     }
 
-    public function getOnwardTravelText(): string
+    public function getOnwardTravelText(): ?string
     {
         return dot($this->interchange)->get('OnwardTravel.com:Annotation.com:Note');
     }
 
-    public function getPassengerServicesCustomerServiceText(): string
+    public function getPassengerServicesCustomerServiceText(): ?string
     {
         return dot($this->passengerServices)->get('CustomerService.com:Annotation.com:Note');
     }
 
-    public function getPostBoxText(): string
+    public function getPostBoxText(): ?string
     {
         return dot($this->stationFacilities)->get('PostBox.com:Location.com:Note');
     }
 
-    public function getRailReplacementServicesText(): string
+    public function getRailReplacementServicesText(): ?string
     {
         return dot($this->interchange)->get('RailReplacementServices.com:Annotation.com:Note');
     }
 
-    public function getShopsText(): string
+    public function getShopsText(): ?string
     {
         return dot($this->stationFacilities)->get('Shops.com:Annotation.com:Note');
     }
 
-    public function getSmartcardComments(): string
+   public function getSmartcardComments(): ?string
     {
         return dot($this->fares)->get('SmartcardComments.com:Note');
     }
 
-    public function getStaffHelpAvailableText(): string
+    public function getStaffHelpAvailableText(): ?string
     {
         return dot($this->accessibility)->get('StaffHelpAvailable.com:Annotation.com:Note');
     }
 
-    public function getStationAlert(): string
+    public function getStationAlert(): ?string
     {
         return dot($this->stationAlerts)->get('AlertText');
     }
 
-    public function getStationBuffetText(): string
+    public function getStationBuffetText(): ?string
     {
         return dot($this->stationFacilities)->get('StationBuffet.com:Annotation.com:Note');
     }
 
-    public function getStepFreeAccessText(): string
+    public function getStepFreeAccessText(): ?string
     {
         return dot($this->accessibility)->get('StepFreeAccess.com:Annotation.com:Note');
     }
 
-    public function getTaxiRankText(): string
+    public function getTaxiRankText(): ?string
     {
         return dot($this->interchange)->get('TaxiRank.com:Annotation.com:Note');
     }
 
-    public function getTicketGatesText(): string
+    public function getTicketGatesText(): ?string
     {
         return dot($this->accessibility)->get('TicketGates.com:Annotation.com:Note');
     }
 
-    public function getTicketOfficeLocationText(): string
+    public function getTicketOfficeLocationText(): ?string
     {
         return dot($this->fares)->get('TicketOffice.com:Location.com:Note');
     }
 
-    public function getToiletsLocationText(): string
+    public function getToiletsLocationText(): ?string
     {
         return dot($this->stationFacilities)->get('Toilets.com:Location.com:Note');
     }
 
-    public function getWaitingRoomLocationText(): string
+    public function getWaitingRoomLocationText(): ?string
     {
         return dot($this->stationFacilities)->get('WaitingRoom.com:Location.com:Note');
     }
 
-    public function getWaitingRoomOpenText(): string
+    public function getWaitingRoomOpenText(): ?string
     {
         return dot($this->stationFacilities)->get('WaitingRoom.com:Open.com:Annotation.com:Note');
     }
 
-    public function getWiFiText(): string
+    public function getWiFiText(): ?string
     {
         return dot($this->stationFacilities)->get('WiFi.com:Annotation.com:Note');
     }
