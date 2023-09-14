@@ -1,0 +1,14 @@
+<Station>
+  <Name>Wrexham</Name>
+  <CrsCode>WRE</CrsCode>
+  <Address>
+    <com:PostalAddress>
+      <add:A_5LineAddress>
+        <add:Line>Wrexham General Station</add:Line>
+        <add:Line>Station Approach</add:Line>
+        <add:Line>Wrexham</add:Line>
+        <add:PostCode>LL11 2AA</add:PostCode>
+      </add:A_5LineAddress>
+    </com:PostalAddress>
+  </Address>
+</Station>

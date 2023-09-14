@@ -1,0 +1,158 @@
+<Station>
+  <Name>Aber</Name>
+  <CrsCode>ABE</CrsCode>
+  <Address>
+    <com:PostalAddress>
+      <add:A_5LineAddress>
+        <add:Line>Aber station</add:Line>
+        <add:Line>Nantgarw Road</add:Line>
+        <add:Line>Aber</add:Line>
+        <add:Line>Caerphilly</add:Line>
+        <add:PostCode>CF83 1AQ</add:PostCode>
+      </add:A_5LineAddress>
+    </com:PostalAddress>
+  </Address>
+  <InformationSystems>
+    <InformationAvailableFromStaff>-1</InformationAvailableFromStaff>
+    <InformationServicesOpen>
+      <com:Annotation>
+        <com:Note><![CDATA[Information available during ticket office opening times.]]></com:Note>
+      </com:Annotation>
+    </InformationServicesOpen>
+  </InformationSystems>
+  <Fares>
+    <TicketOffice>
+      <com:Location>
+        <com:Note><![CDATA[<p>At the Penarth Road entrance and on the concourse.</p>]]></com:Note>
+      </com:Location>
+    </TicketOffice>
+    <SmartcardComments>
+      <com:Note><![CDATA[<p>Load a pre-purchased season ticket onto a smartcard using the smartcard validator.</p>]]></com:Note>
+    </SmartcardComments>
+  </Fares>
+  <PassengerServices>
+    <CustomerService>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>Contact our Customer Relations team directly via <a href="https://tfw.wales/help-and-contact/rail/contact-us">the Transport for Wales Website.</a></p>]]></com:Note>
+      </com:Annotation>
+    </CustomerService>
+  </PassengerServices>
+  <StationFacilities>
+    <AtmMachine>
+      <com:Location>
+        <com:Note><![CDATA[<p>Located outside the main entrance.</p>]]></com:Note>
+      </com:Location>
+    </AtmMachine>
+    <FirstClassLounge>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>Located on Platform 1 </p><p>All First Class tickets accepted.</p><p>A comfortable modern lounge, with information screens, complimentary refreshments and a dedicated customer host ready to serve you. </p><p>Wi-Fi is available.</p>]]></com:Note>
+      </com:Annotation>
+    </FirstClassLounge>
+    <PostBox>
+      <com:Location>
+        <com:Note><![CDATA[<p>At the Penarth Road entrance and also in the main concourse.</p>]]></com:Note>
+      </com:Location>
+    </PostBox>
+    <Shops>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>News agent and convenience store</p>]]></com:Note>
+      </com:Annotation>
+    </Shops>
+    <StationBuffet>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>Cold drinks vending machine.</p><p>Hot drinks vending machine.</p><p>Food vending machine.</p><p>Food outlet (Seating available).</p>]]></com:Note>
+      </com:Annotation>
+    </StationBuffet>
+    <Toilets>
+      <com:Location>
+        <com:Note><![CDATA[<p>The toilets are located on Platforms 1 to 8. The National Key toilets are located in the East Subway near the lifts and on Platform 8; these toilets are operated by a radar key and are only available during staffing hours.</p>]]></com:Note>
+      </com:Location>
+    </Toilets>
+    <WaitingRoom>
+      <com:Open>
+        <com:Annotation>
+          <com:Note><![CDATA[<p>Closed until further notice.</p>]]></com:Note>
+        </com:Annotation>
+      </com:Open>
+      <com:Location>
+        <com:Note><![CDATA[<p>On platforms 1/2, 3/4, 6/7 and 8.</p>]]></com:Note>
+      </com:Location>
+    </WaitingRoom>
+    <WiFi>
+      <com:Annotation>
+        <com:Note><![CDATA[<p><a href="https://www.btwifi.co.uk/find/" target="_blank" rel="nofollow">Find WiFi Hotspots around Aber station</a></p>]]></com:Note>
+      </com:Annotation>
+      <com:Available>false</com:Available>
+    </WiFi>
+  </StationFacilities>
+  <StationAlerts>
+    <AlertText><![CDATA[<p>The taxi rank is located on Penarth Road, under the railway bridge.   </p><p>When exiting the main station entrance (Central Square), turn right and right again under the railway bridge by Viva Brazil.</p><p><a href="https://tfw.wales/places/stations/cardiff-central" title="">F</a><a href="https://urldefense.com/v3/__https:/tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">or further information click here and s</a><a href="https://urldefense.com/v3/__https://tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">croll to "Cardiff Central Station taxi rank relocation"</a><a href="https://urldefense.com/v3/__https:/tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">.</a></p>]]></AlertText>
+  </StationAlerts>
+  <Interchange>
+    <Airport>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>The T9 Airport Express coach service departs from the bus stop at the rear of the railway station.</p><p>The full timetable can be found <a href="http://www.trawscymru.info/t9/" title="">http://www.trawscymru.info/t9/</a>.  The journey time is 40 minutes.</p>]]></com:Note>
+      </com:Annotation>
+    </Airport>
+    <CarPark>
+      <com:OperatorName><![CDATA[APCOA]]></com:OperatorName>
+      <Name><![CDATA[Penarth Road]]></Name>
+    </CarPark>
+    <CycleStorage>
+      <Annotation>
+        <com:Note><![CDATA[<p>Sheltered stands are available on each platform.</p>]]></com:Note>
+      </Annotation>
+      <Location>
+        <com:Note><![CDATA[<p>East end of platforms 1 and 2, 3 and 4, 6 and 7 - also at the front and rear of the station.</p>]]></com:Note>
+      </Location>
+    </CycleStorage>
+    <OnwardTravel>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>There is currently no central bus station.  Bus services depart and arrive at stops around the city centre.  Click on the link to see <a href="http://www.cardiffbus.com/english/servicelisting.shtml#_subnav01" title="">a list of routes and timetables</a></p><p>Buy a Cardiff <em><strong>PlusBus</strong></em> ticket with your train ticket for discount-priced unlimited bus travel around the town. For details visit <a href="http://www.PlusBus.info" title="">www.PlusBus.info</a></p>]]></com:Note>
+      </com:Annotation>
+    </OnwardTravel>
+    <TaxiRank>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>From Tuesday 20 September 2022, the taxi rank is located on Penarth Road, under the railway bridge.   </p><p>When exiting the main station entrance (Central Square), turn right and right again under the railway bridge by Viva Brazil.</p><p><a href="https://tfw.wales/places/stations/cardiff-central" title="">F</a><a href="https://urldefense.com/v3/__https:/tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">or further information click here and s</a><a href="https://urldefense.com/v3/__https://tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">croll to "Cardiff Central Station taxi rank relocation"</a><a href="https://urldefense.com/v3/__https:/tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">.</a></p>]]></com:Note>
+      </com:Annotation>
+    </TaxiRank>
+    <RailReplacementServices>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>The rail replacement bus stop is at the rear car park (Penarth Road entrance).</p>]]></com:Note>
+      </com:Annotation>
+    </RailReplacementServices>
+  </Interchange>
+  <Accessibility>
+    <AccessiblePublicTelephones>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>There are four payphones in the concourse and one each on platforms 1/2, 3/4 and 6/7.</p>]]></com:Note>
+      </com:Annotation>
+    </AccessiblePublicTelephones>
+    <Helpline>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>We want everyone to travel with confidence. That is why, if you are planning on travelling on national rail services, you can request an assistance booking in advance - now up to 2 hours before your journey is due to start, any time of the day. For more information about Passenger Assist and how to request an assistance booking via Passenger Assist, please <a href="https://www.nationalrail.co.uk/stations_destinations/passenger-assist.aspx" title="">click here</a>.</p>]]></com:Note>
+      </com:Annotation>
+    </Helpline>
+    <NationalKeyToilets>
+      <com:Location>
+        <com:Note><![CDATA[<p>The National Key/Accessible toilets are located in the East Subway near the lifts and on Platform 8; these toilets are operated by a RADAR key and are only available during staffing hours.</p>]]></com:Note>
+      </com:Location>
+    </NationalKeyToilets>
+    <StaffHelpAvailable>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>Monday to Friday 04:00 to 01:00</p><p>Saturday 04:00 to 00:30</p><p>Sunday 07:00 to 00:30</p>]]></com:Note>
+      </com:Annotation>
+    </StaffHelpAvailable>
+    <StepFreeAccess>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>Category A.</p><p>Step free access is available to Platforms 0 to 8.</p>]]></com:Note>
+      </com:Annotation>
+      <Coverage>wholeStation</Coverage>
+    </StepFreeAccess>
+    <TicketGates>
+      <com:Annotation>
+        <com:Note><![CDATA[<p>Accessible gate available at each set of ticket gates</p>]]></com:Note>
+      </com:Annotation>
+    </TicketGates>
+  </Accessibility>
+</Station>
