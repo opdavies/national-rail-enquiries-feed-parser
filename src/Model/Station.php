@@ -158,7 +158,7 @@ final class Station
         return dot($this->interchange)->get('OnwardTravel.com:Annotation.com:Note');
     }
 
-    public function getPostcode(): string 
+    public function getPostcode(): string
     {
         return $this->getAddress()->postcode;
     }
