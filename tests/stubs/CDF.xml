@@ -49,9 +49,6 @@
           </com:OpeningHours>
         </com:DayAndTimeAvailability>
       </com:Open>
-      <com:Location>
-        <com:Note><![CDATA[<p>At the Penarth Road entrance and on the concourse.</p>]]></com:Note>
-      </com:Location>
     </TicketOffice>
   </Fares>
 </Station>
