@@ -242,4 +242,17 @@ final class Station
     {
         return dot($this->stationFacilities)->get('WiFi.com:Annotation.com:Note');
     }
+
+    public function getClosingTime(string $day): string
+    {
+        $openTimes = dot($this->fares)->get('TicketOffice.com:Open.com:DayAndTimeAvailability');
+
+        $openTimesForDay = array_values(array_filter($openTimes, function (array $openTime) use ($day): bool {
+            return array_key_exists(key: "com:{$day}", array: $openTime['com:DayTypes']);
+        }));
+
+        $endTime = dot($openTimesForDay)->get('0.com:OpeningHours.com:OpenPeriod.com:EndTime');
+
+        return substr(string: $endTime, offset: 0, length: 5);
+    }
 }

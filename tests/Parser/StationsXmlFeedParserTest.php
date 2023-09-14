@@ -5,6 +5,10 @@ use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
 use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsXmlFeedParser;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 
+beforeEach(function () {
+    $this->parser = new StationsXmlFeedParser();
+});
+
 it('parses a list of stations from XML', function () {
     $data = <<<EOF
         <StationList>
@@ -826,4 +830,15 @@ it('returns a null value for text values if they are not present', function() {
     expect($station->getWaitingRoomLocationText())->toBeNull();
     expect($station->getWaitingRoomOpenText())->toBeNull();
     expect($station->getWiFiText())->toBeNull();
+});
+
+it('returns the ticket office closing time for a station', function () {
+    $data = file_get_contents(__DIR__.'/../stubs/CDF.xml');
+
+    $station = $this->parser->parseStation($data);
+
+    // TODO: add tests for weekdays.
+
+    expect($station->getClosingTime(day: 'Saturday'))->toBe('21:30');
+    expect($station->getClosingTime(day: 'Sunday'))->toBe('21:30');
 });

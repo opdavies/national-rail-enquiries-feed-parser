@@ -1,0 +1,57 @@
+<Station>
+  <Name>Cardiff Central</Name>
+  <CrsCode>CDF</CrsCode>
+  <Address>
+    <com:PostalAddress>
+      <add:A_5LineAddress>
+        <add:Line>Cardiff Central Station</add:Line>
+        <add:Line>Central Square</add:Line>
+        <add:Line>Cardiff</add:Line>
+        <add:Line>Cardiff</add:Line>
+        <add:PostCode>CF10 1EP</add:PostCode>
+      </add:A_5LineAddress>
+    </com:PostalAddress>
+  </Address>
+  <Fares>
+    <TicketOffice>
+      <com:Open>
+        <com:DayAndTimeAvailability>
+          <com:DayTypes>
+            <com:MondayToFriday>true</com:MondayToFriday>
+          </com:DayTypes>
+          <com:OpeningHours>
+            <com:OpenPeriod>
+              <com:StartTime>05:40:00.000</com:StartTime>
+              <com:EndTime>21:30:00.000</com:EndTime>
+            </com:OpenPeriod>
+          </com:OpeningHours>
+        </com:DayAndTimeAvailability>
+        <com:DayAndTimeAvailability>
+          <com:DayTypes>
+            <com:Saturday>true</com:Saturday>
+          </com:DayTypes>
+          <com:OpeningHours>
+            <com:OpenPeriod>
+              <com:StartTime>05:40:00.000</com:StartTime>
+              <com:EndTime>21:30:00.000</com:EndTime>
+            </com:OpenPeriod>
+          </com:OpeningHours>
+        </com:DayAndTimeAvailability>
+        <com:DayAndTimeAvailability>
+          <com:DayTypes>
+            <com:Sunday>true</com:Sunday>
+          </com:DayTypes>
+          <com:OpeningHours>
+            <com:OpenPeriod>
+              <com:StartTime>07:30:00.000</com:StartTime>
+              <com:EndTime>21:30:00.000</com:EndTime>
+            </com:OpenPeriod>
+          </com:OpeningHours>
+        </com:DayAndTimeAvailability>
+      </com:Open>
+      <com:Location>
+        <com:Note><![CDATA[<p>At the Penarth Road entrance and on the concourse.</p>]]></com:Note>
+      </com:Location>
+    </TicketOffice>
+  </Fares>
+</Station>
