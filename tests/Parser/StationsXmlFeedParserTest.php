@@ -146,6 +146,32 @@ it("returns a 5 line address for a station", function () {
     expect($address->postcode)->toBe('CF83 1AQ');
 });
 
+it("returns the postcode for a station", function () {
+    $data = <<<EOF
+        <Station>
+            <Name>Aber</Name>
+            <CrsCode>ABE</CrsCode>
+            <Address>
+              <com:PostalAddress>
+                <add:A_5LineAddress>
+                  <add:Line>Aber station</add:Line>
+                  <add:Line>Nantgarw Road</add:Line>
+                  <add:Line>Aber</add:Line>
+                  <add:Line>Caerphilly</add:Line>
+                  <add:PostCode>CF83 1AQ</add:PostCode>
+                </add:A_5LineAddress>
+              </com:PostalAddress>
+            </Address>
+        </Station>
+    EOF;
+
+    $parser = new StationsXmlFeedParser();
+
+    $station = $parser->parseStation($data);
+
+    expect($station->getPostcode())->toBe('CF83 1AQ');
+});
+
 it('returns the InformationServicesOpen text', function() {
     $data = <<<EOF
         <Station>
