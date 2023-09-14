@@ -12,6 +12,13 @@
       </add:A_5LineAddress>
     </com:PostalAddress>
   </Address>
+  <Accessibility>
+      <Helpline>
+          <com_Annotation>
+              <com_Note><![CDATA[<p>Test.</p>]]></com_Note>
+          </com_Annotation>
+      </Helpline>
+  </Accessibility>
   <Fares>
     <TicketOffice>
       <com:Open>

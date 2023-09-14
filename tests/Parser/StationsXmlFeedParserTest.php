@@ -49,19 +49,7 @@ it('parses an empty list of stations from XML', function () {
 });
 
 it('parses a single station from XML', function () {
-    $data = <<<EOF
-        <Station>
-            <Accessibility>
-                <Helpline>
-                    <com_Annotation>
-                        <com_Note><![CDATA[<p>Test.</p>]]></com_Note>
-                    </com_Annotation>
-                </Helpline>
-            </Accessibility>
-            <CrsCode>CDF</CrsCode>
-            <Name>Cardiff Central</Name>
-        </Station>
-    EOF;
+    $data = file_get_contents(__DIR__.'/../stubs/CDF.xml');
 
     $station = $this->parser->parseStation($data);
 
