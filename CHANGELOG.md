@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.4.0] - 2023-09-18
+
+### Added
+
+- Parser: add a `getPostcode()` method to easily get the postcode for a station.
+- Parser: add a `getClosingTime()` method to get the ticket office closing time for a specified day.
+
+## [0.3.2] - 2023-06-01
+
 ### Fixed
 
 - Parser: Airport text is within `Interchange`.
@@ -102,7 +111,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Serializer: remove the `StationSerializer`.
 
-[unreleased]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.3.1...HEAD
+[unreleased]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.3.2...0.4.0
+[0.3.2]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.2.0...0.3.1
 [0.2.0]: https://github.com/opdavies/national-rail-enquiries-feed-parser/compare/0.1.5...0.2.0
