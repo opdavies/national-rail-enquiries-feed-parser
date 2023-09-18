@@ -1,0 +1,52 @@
+<Station>
+  <CrsCode>TRF</CrsCode>
+  <Name>Trefforest</Name>
+  <SixteenCharacterName>TREFFOREST</SixteenCharacterName>
+  <Address>
+    <com:PostalAddress>
+      <add:A_5LineAddress>
+        <add:Line>Trefforest station</add:Line>
+        <add:Line>Park Street</add:Line>
+        <add:Line>Trefforest</add:Line>
+        <add:Line>Rhondda Cynon Taf</add:Line>
+        <add:PostCode>CF37 1SL</add:PostCode>
+      </add:A_5LineAddress>
+    </com:PostalAddress>
+  </Address>
+  <Fares>
+    <TicketOffice>
+      <com:Open>
+        <com:Annotation>
+          <com:Note><![CDATA[<p>Temporary opening hours due to the COVID-19 pandemic.</p>]]></com:Note>
+        </com:Annotation>
+        <com:DayAndTimeAvailability>
+          <com:DayTypes>
+            <com:Monday>true</com:Monday>
+            <com:Tuesday>true</com:Tuesday>
+            <com:Wednesday>true</com:Wednesday>
+            <com:Thursday>true</com:Thursday>
+            <com:Friday>true</com:Friday>
+            <com:Saturday>true</com:Saturday>
+          </com:DayTypes>
+          <com:OpeningHours>
+            <com:OpenPeriod>
+              <com:StartTime>07:20:00.000</com:StartTime>
+              <com:EndTime>13:00:00.000</com:EndTime>
+            </com:OpenPeriod>
+          </com:OpeningHours>
+        </com:DayAndTimeAvailability>
+        <com:DayAndTimeAvailability>
+          <com:DayTypes>
+            <com:Sunday>true</com:Sunday>
+          </com:DayTypes>
+          <com:OpeningHours>
+            <com:Unavailable>true</com:Unavailable>
+          </com:OpeningHours>
+        </com:DayAndTimeAvailability>
+      </com:Open>
+      <com:Location>
+        <com:Note><![CDATA[<p>On the Cardiff-bound platform</p>]]></com:Note>
+      </com:Location>
+    </TicketOffice>
+  </Fares>
+</Station>

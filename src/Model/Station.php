@@ -243,16 +243,42 @@ final class Station
         return dot($this->stationFacilities)->get('WiFi.com:Annotation.com:Note');
     }
 
-    public function getClosingTime(string $day): string
+    public function getClosingTime(string $day): ?string
     {
         $openTimes = dot($this->fares)->get('TicketOffice.com:Open.com:DayAndTimeAvailability');
 
-        $openTimesForDay = array_values(array_filter($openTimes, function (array $openTime) use ($day): bool {
-            return array_key_exists(key: "com:{$day}", array: $openTime['com:DayTypes']);
-        }));
+        if ($openTimes === null) {
+            return null;
+        }
 
-        $endTime = dot($openTimesForDay)->get('0.com:OpeningHours.com:OpenPeriod.com:EndTime');
+        $openTimes = self::openTimesForDay(openTimes: $openTimes, day: $day);
+
+        $endTime = dot($openTimes)->get('0.com:OpeningHours.com:OpenPeriod.com:EndTime');
+
+        if ($endTime === null) {
+            return null;
+        }
 
         return substr(string: $endTime, offset: 0, length: 5);
+    }
+
+    /**
+     * @param array<int, mixed> $openTimes
+     *
+     * @return array<int, string|bool>
+     */
+    private static function openTimesForDay(array $openTimes, string $day): array
+    {
+        $openTimesForDay = array_values(array_filter($openTimes, function (array $openTime) use ($day): bool {
+            return array_key_exists(key: sprintf('com:%s', $day), array: $openTime['com:DayTypes']);
+        }));
+
+        if ($openTimesForDay === []) {
+            return array_values(array_filter($openTimes, function (array $openTime): bool {
+                return array_key_exists(key: 'com:MondayToFriday', array: $openTime['com:DayTypes']);
+            }));
+        }
+
+        return $openTimesForDay;
     }
 }

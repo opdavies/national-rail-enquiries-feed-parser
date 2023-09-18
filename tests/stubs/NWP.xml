@@ -1,0 +1,54 @@
+<Station>
+  <CrsCode>NWP</CrsCode>
+  <Name>Newport (South Wales)</Name>
+  <Address>
+    <com:PostalAddress>
+      <add:A_5LineAddress>
+        <add:Line>Newport (South Wales) station</add:Line>
+        <add:Line>Queensway</add:Line>
+        <add:Line>Newport</add:Line>
+        <add:Line>Gwent</add:Line>
+        <add:PostCode>NP20 4AX</add:PostCode>
+      </add:A_5LineAddress>
+    </com:PostalAddress>
+  </Address>
+  <Fares>
+    <TicketOffice>
+      <com:Open>
+        <com:DayAndTimeAvailability>
+          <com:DayTypes>
+            <com:MondayToFriday>true</com:MondayToFriday>
+          </com:DayTypes>
+          <com:OpeningHours>
+            <com:OpenPeriod>
+              <com:StartTime>05:45:00.000</com:StartTime>
+              <com:EndTime>20:00:00.000</com:EndTime>
+            </com:OpenPeriod>
+          </com:OpeningHours>
+        </com:DayAndTimeAvailability>
+        <com:DayAndTimeAvailability>
+          <com:DayTypes>
+            <com:Saturday>true</com:Saturday>
+          </com:DayTypes>
+          <com:OpeningHours>
+            <com:OpenPeriod>
+              <com:StartTime>06:30:00.000</com:StartTime>
+              <com:EndTime>20:30:00.000</com:EndTime>
+            </com:OpenPeriod>
+          </com:OpeningHours>
+        </com:DayAndTimeAvailability>
+        <com:DayAndTimeAvailability>
+          <com:DayTypes>
+            <com:Sunday>true</com:Sunday>
+          </com:DayTypes>
+          <com:OpeningHours>
+            <com:OpenPeriod>
+              <com:StartTime>08:00:00.000</com:StartTime>
+              <com:EndTime>19:45:00.000</com:EndTime>
+            </com:OpenPeriod>
+          </com:OpeningHours>
+        </com:DayAndTimeAvailability>
+      </com:Open>
+    </TicketOffice>
+  </Fares>
+</Station>

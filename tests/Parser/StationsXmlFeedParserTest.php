@@ -399,13 +399,56 @@ it('returns a null value for text values if they are not present', function() {
     expect($station->getWiFiText())->toBeNull();
 });
 
-it('returns the ticket office closing time for a station', function () {
-    $data = file_get_contents(__DIR__.'/../stubs/CDF.xml');
+it('returns the ticket office closing time for a station where days are set as MondayToFriday', function () {
+    $data = file_get_contents(__DIR__.'/../stubs/NWP.xml');
 
     $station = $this->parser->parseStation($data);
 
-    // TODO: add tests for weekdays.
+    expect($station->getClosingTime(day: 'Monday'))->toBe('20:00');
+    expect($station->getClosingTime(day: 'Tuesday'))->toBe('20:00');
+    expect($station->getClosingTime(day: 'Wednesday'))->toBe('20:00');
+    expect($station->getClosingTime(day: 'Thursday'))->toBe('20:00');
+    expect($station->getClosingTime(day: 'Friday'))->toBe('20:00');
 
-    expect($station->getClosingTime(day: 'Saturday'))->toBe('21:30');
-    expect($station->getClosingTime(day: 'Sunday'))->toBe('21:30');
+    expect($station->getClosingTime(day: 'Saturday'))->toBe('20:30');
+    expect($station->getClosingTime(day: 'Sunday'))->toBe('19:45');
+});
+
+it('returns the ticket office closing time for a station where days are defined as different days', function () {
+    $xml = file_get_contents(__DIR__.'/../stubs/TRF.xml');
+
+    $station = $this->parser->parseStation($xml);
+
+    expect($station->getClosingTime(day: 'Monday'))->toBe('13:00');
+    expect($station->getClosingTime(day: 'Tuesday'))->toBe('13:00');
+    expect($station->getClosingTime(day: 'Wednesday'))->toBe('13:00');
+    expect($station->getClosingTime(day: 'Thursday'))->toBe('13:00');
+    expect($station->getClosingTime(day: 'Friday'))->toBe('13:00');
+    expect($station->getClosingTime(day: 'Saturday'))->toBe('13:00');
+
+    expect($station->getClosingTime(day: 'Sunday'))->toBeNull();
+});
+
+it('returns null if a station does not have a ticket office', function() {
+    $data = <<<EOF
+        <Station>
+            <CrsCode>TRE</CrsCode>
+            <Name>Trefforest Estate</Name>
+            <Fares>
+                <TicketOffice>
+                    <com:Available>false</com:Available>
+                </TicketOffice>
+            </Fares>
+        </Station>
+    EOF;
+
+    $station = $this->parser->parseStation($data);
+
+    expect($station->getClosingTime(day: 'Monday'))->toBeNull();
+    expect($station->getClosingTime(day: 'Tuesday'))->toBeNull();
+    expect($station->getClosingTime(day: 'Wednesday'))->toBeNull();
+    expect($station->getClosingTime(day: 'Thursday'))->toBeNull();
+    expect($station->getClosingTime(day: 'Friday'))->toBeNull();
+    expect($station->getClosingTime(day: 'Saturday'))->toBeNull();
+    expect($station->getClosingTime(day: 'Sunday'))->toBeNull();
 });
