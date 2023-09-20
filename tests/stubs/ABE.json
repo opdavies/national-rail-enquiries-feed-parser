@@ -1,0 +1,11 @@
+{
+  "Name": "Aber",
+  "Address": {
+    "com:PostalAddress": {
+      "add:A_5LineAddress": {
+        "add:Line": ["Aber station", "Nantgarw Road", "Aber", "Caerphilly"],
+        "add:PostCode": "CF83 1AQ"
+      }
+    }
+  }
+}

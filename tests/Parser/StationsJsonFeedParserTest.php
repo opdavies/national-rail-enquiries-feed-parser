@@ -4,6 +4,10 @@ use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
 use Opdavies\NationalRailEnquriesFeedParser\Parser\StationsJsonFeedParser;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 
+beforeEach(function () {
+    $this->parser = new StationsJsonFeedParser();
+});
+
 it('parses a list of stations from JSON', function () {
     $data = <<<EOF
     [
@@ -21,8 +25,7 @@ it('parses a list of stations from JSON', function () {
 
     expect($stations)
         ->toHaveCount(5)
-        ->each->toBeInstanceOf(Station::class)
-        ;
+        ->each->toBeInstanceOf(Station::class);
 });
 
 it('parses an empty list of stations from JSON', function () {
@@ -82,3 +85,11 @@ it('throws an exception if the CRS code contains invalid characters', function (
 
     $parser->parseStation($data);
 })->throws(ValidationFailedException::class);
+
+it("returns the postcode for a station", function () {
+    $data = file_get_contents(__DIR__.'/../stubs/ABE.json');
+
+    $station = $this->parser->parseStation($data);
+
+    expect($station->getPostcode())->toBe('CF83 1AQ');
+});
