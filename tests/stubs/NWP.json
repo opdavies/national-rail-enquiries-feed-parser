@@ -1,0 +1,58 @@
+{
+  "CrsCode": "NWP",
+  "Name": "Newport (South Wales)",
+  "Address": {
+    "com:PostalAddress": {
+      "add:A_5LineAddress": {
+        "add:Line": [
+          "Newport (South Wales) station",
+          "Queensway",
+          "Newport",
+          "Gwent"
+        ],
+        "add:PostCode": "NP20 4AX"
+      }
+    }
+  },
+  "Fares": {
+    "TicketOffice": {
+      "com:Open": {
+        "com:DayAndTimeAvailability": [
+          {
+            "com:DayTypes": {
+              "com:MondayToFriday": true
+            },
+            "com:OpeningHours": {
+              "com:OpenPeriod": {
+                "com:StartTime": "05:45:00.000",
+                "com:EndTime": "20:00:00.000"
+              }
+            }
+          },
+          {
+            "com:DayTypes": {
+              "com:Saturday": true
+            },
+            "com:OpeningHours": {
+              "com:OpenPeriod": {
+                "com:StartTime": "06:30:00.000",
+                "com:EndTime": "20:30:00.000"
+              }
+            }
+          },
+          {
+            "com:DayTypes": {
+              "com:Sunday": true
+            },
+            "com:OpeningHours": {
+              "com:OpenPeriod": {
+                "com:StartTime": "08:00:00.000",
+                "com:EndTime": "19:45:00.000"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
