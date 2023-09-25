@@ -130,11 +130,11 @@ it('returns null if a station does not have a ticket office', function() {
         "CrsCode": "TRE",
         "Name": "Trefforest Estate",
         "Fares": {
-        "TicketOffice": {
-          "Available": false
+          "TicketOffice": {
+            "Available": false
+          }
         }
       }
-    }
     EOF;
 
     $station = $this->parser->parseStation($data);
