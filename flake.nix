@@ -1,7 +1,7 @@
 {
   inputs = {
     devshell.url = "github:numtide/devshell";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
   };
 
   outputs = inputs@{ flake-parts, ... }:
@@ -14,11 +14,7 @@
         formatter = pkgs.nixpkgs-fmt;
 
         devshells.default = {
-          packages = with pkgs; [
-            "nodePackages_latest.nodemon"
-            "php80"
-            "php80Packages.composer"
-          ];
+          packages = with pkgs; [ "php80" "php80Packages.composer" ];
         };
       };
     };
