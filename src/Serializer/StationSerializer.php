@@ -30,12 +30,12 @@ final class StationSerializer implements SerializerInterface
         );
     }
 
-    public function serialize(mixed $data, $format, array $context = []): string
+    public function serialize(mixed $data, string $format, array $context = []): string
     {
         return $this->serializer->serialize($data, $format, $context);
     }
 
-    public function deserialize(mixed $data, $type, $format, array $context = [])
+    public function deserialize(mixed $data, string $type, string $format, array $context = [])
     {
         $station = $this->serializer->deserialize($data, $type, $format, $context);
 
