@@ -41,7 +41,7 @@ final class StationSerializer implements SerializerInterface
 
         $validator = Validation::createValidatorBuilder()
             ->addDefaultDoctrineAnnotationReader()
-            ->enableAttributeMapping()
+            ->enableAnnotationMapping()
             ->getValidator();
 
         $violations = $validator->validate($station);
