@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Parser: some stations have 5 line addresses with only three lines. If so, return a null value for the missing lines, as done previously if they only have four lines.
 - Enabled the Doctrine annotation reader when validating, as not having it was causing the tests to fail since upgrading to Symfony 6.
 
 ## [0.4.0] - 2023-09-18

@@ -84,6 +84,12 @@ final class Station
             $lines[] = null;
         }
 
+        // Also, some 5-line addresses have only three lines (including the postcode).
+        if (count($lines) === 2) {
+            $lines[] = null;
+            $lines[] = null;
+        }
+
         /** @var array<int,string> */
         $addressLines = [
             ...$lines,

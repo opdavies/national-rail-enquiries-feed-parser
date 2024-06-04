@@ -356,6 +356,18 @@ test('some 5 line addresses have only four lines', function() {
     expect($station->getAddress()->postcode)->toBe('LL11 2AA');
 });
 
+test('some 5 line addresses have only three lines', function() {
+    $data = file_get_contents(__DIR__.'/../stubs/LEV.xml');
+
+    $station = $this->parser->parseStation($data);
+
+    expect($station->getAddress()->line1)->toBe('Leven Station');
+    expect($station->getAddress()->line2)->toBe('Leven');
+    expect($station->getAddress()->line3)->toBeNull();
+    expect($station->getAddress()->line4)->toBeNull();
+    expect($station->getAddress()->postcode)->toBe('KY8 4LQ');
+});
+
 it('returns a null value for text values if they are not present', function() {
     $data = <<<EOF
         <Station>

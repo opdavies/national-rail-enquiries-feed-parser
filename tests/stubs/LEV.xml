@@ -1,0 +1,13 @@
+<Station>
+  <CrsCode>LEV</CrsCode>
+  <Name>Leven</Name>
+  <Address>
+    <com:PostalAddress>
+      <add:A_5LineAddress>
+        <add:Line>Leven Station</add:Line>
+        <add:Line>Leven</add:Line>
+        <add:PostCode>KY8 4LQ</add:PostCode>
+      </add:A_5LineAddress>
+    </com:PostalAddress>
+  </Address>
+</Station>
