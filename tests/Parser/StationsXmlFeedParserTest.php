@@ -9,7 +9,7 @@ beforeEach(function () {
     $this->parser = new StationsXmlFeedParser();
 });
 
-it('parses a list of stations from XML', function () {
+test('parse a list of stations from XML', function () {
     $data = <<<EOF
         <StationList>
             <Station>
@@ -42,13 +42,13 @@ it('parses a list of stations from XML', function () {
         ->each->toBeInstanceOf(Station::class);
 });
 
-it('parses an empty list of stations from XML', function () {
+test('parse an empty list of stations from XML', function () {
     $stations = $this->parser->parseStationList('');
 
     expect($stations)->toBeEmpty();
 });
 
-it('parses a single station from XML', function () {
+test('parse a single station from XML', function () {
     $data = file_get_contents(__DIR__.'/../stubs/CDF.xml');
 
     $station = $this->parser->parseStation($data);
@@ -60,7 +60,7 @@ it('parses a single station from XML', function () {
     expect($station->getName())->toBe('Cardiff Central');
 });
 
-it('throws an exception if the CRS code is too short', function () {
+test('throw an exception if the CRS code is too short', function () {
     $data = <<<EOF
         <Station>
             <CrsCode>AA</CrsCode>
@@ -71,7 +71,7 @@ it('throws an exception if the CRS code is too short', function () {
     $this->parser->parseStation($data);
 })->throws(ValidationFailedException::class);
 
-it('throws an exception if the CRS code is too long', function () {
+test('throw an exception if the CRS code is too long', function () {
     $data = <<<EOF
         <Station>
             <CrsCode>AAAA</CrsCode>
@@ -82,7 +82,7 @@ it('throws an exception if the CRS code is too long', function () {
     $this->parser->parseStation($data);
 })->throws(ValidationFailedException::class);
 
-it('throws an exception if the CRS code contains invalid characters', function () {
+test('throw an exception if the CRS code contains invalid characters', function () {
     $data = <<<EOF
         <Station>
             <CrsCode>123</CrsCode>
@@ -93,7 +93,7 @@ it('throws an exception if the CRS code contains invalid characters', function (
     $this->parser->parseStation($data);
 })->throws(ValidationFailedException::class);
 
-it("returns a 5 line address for a station", function () {
+test('return a 5 line address for a station', function () {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -108,7 +108,7 @@ it("returns a 5 line address for a station", function () {
     expect($address->postcode)->toBe('CF83 1AQ');
 });
 
-it("returns the postcode for a station", function () {
+test('return the postcode for a station', function () {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -116,7 +116,7 @@ it("returns the postcode for a station", function () {
     expect($station->getPostcode())->toBe('CF83 1AQ');
 });
 
-it('returns the InformationServicesOpen text', function() {
+test('return the InformationServicesOpen text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -125,7 +125,7 @@ it('returns the InformationServicesOpen text', function() {
         ->toBe('Information available during ticket office opening times.');
 });
 
-it('returns the SmartcardComments text', function() {
+test('return the SmartcardComments text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -134,7 +134,7 @@ it('returns the SmartcardComments text', function() {
         ->toBe('<p>Load a pre-purchased season ticket onto a smartcard using the smartcard validator.</p>');
 });
 
-it('returns the PassengerServices CustomerService text', function() {
+test('return the PassengerServices CustomerService text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -143,7 +143,7 @@ it('returns the PassengerServices CustomerService text', function() {
         ->toBe('<p>Contact our Customer Relations team directly via <a href="https://tfw.wales/help-and-contact/rail/contact-us">the Transport for Wales Website.</a></p>');
 });
 
-it('returns the WiFi text from station facilities', function() {
+test('return the WiFi text from station facilities', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -152,7 +152,7 @@ it('returns the WiFi text from station facilities', function() {
         ->toBe('<p><a href="https://www.btwifi.co.uk/find/" target="_blank" rel="nofollow">Find WiFi Hotspots around Aber station</a></p>');
 });
 
-it('returns the station alert', function() {
+test('return the station alert', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -161,7 +161,7 @@ it('returns the station alert', function() {
         ->toBe('<p>The taxi rank is located on Penarth Road, under the railway bridge.   </p><p>When exiting the main station entrance (Central Square), turn right and right again under the railway bridge by Viva Brazil.</p><p><a href="https://tfw.wales/places/stations/cardiff-central" title="">F</a><a href="https://urldefense.com/v3/__https:/tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">or further information click here and s</a><a href="https://urldefense.com/v3/__https://tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">croll to "Cardiff Central Station taxi rank relocation"</a><a href="https://urldefense.com/v3/__https:/tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">.</a></p>');
 });
 
-it('returns the airport text', function() {
+test('return the airport text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -170,7 +170,7 @@ it('returns the airport text', function() {
         ->toBe('<p>The T9 Airport Express coach service departs from the bus stop at the rear of the railway station.</p><p>The full timetable can be found <a href="http://www.trawscymru.info/t9/" title="">http://www.trawscymru.info/t9/</a>.  The journey time is 40 minutes.</p>');
 });
 
-it('returns the OnwardTravelText from the Interchange section', function() {
+test('return the OnwardTravelText from the Interchange section', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -179,7 +179,7 @@ it('returns the OnwardTravelText from the Interchange section', function() {
         ->toBe('<p>There is currently no central bus station.  Bus services depart and arrive at stops around the city centre.  Click on the link to see <a href="http://www.cardiffbus.com/english/servicelisting.shtml#_subnav01" title="">a list of routes and timetables</a></p><p>Buy a Cardiff <em><strong>PlusBus</strong></em> ticket with your train ticket for discount-priced unlimited bus travel around the town. For details visit <a href="http://www.PlusBus.info" title="">www.PlusBus.info</a></p>');
 });
 
-it('returns the TaxiRank text from the Interchange section', function() {
+test('return the TaxiRank text from the Interchange section', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -188,7 +188,7 @@ it('returns the TaxiRank text from the Interchange section', function() {
         ->toBe('<p>From Tuesday 20 September 2022, the taxi rank is located on Penarth Road, under the railway bridge.   </p><p>When exiting the main station entrance (Central Square), turn right and right again under the railway bridge by Viva Brazil.</p><p><a href="https://tfw.wales/places/stations/cardiff-central" title="">F</a><a href="https://urldefense.com/v3/__https:/tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">or further information click here and s</a><a href="https://urldefense.com/v3/__https://tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">croll to "Cardiff Central Station taxi rank relocation"</a><a href="https://urldefense.com/v3/__https:/tfw.wales/places/stations/cardiff-central__;!!KArG4XNCWg!iASOnDudY6nhSAhEwNdGI351bRwpr9LJVlf44jehWS2Guc1Oad24A3Yy7oriXIYPe7YtSbQK36OBE_o68myzABMBUaMpEuEnXw$" title="">.</a></p>');
 });
 
-it('returns the rail replacement services text', function() {
+test('return the rail replacement services text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -197,7 +197,7 @@ it('returns the rail replacement services text', function() {
         ->toBe('<p>The rail replacement bus stop is at the rear car park (Penarth Road entrance).</p>');
 });
 
-it('returns the StaffHelpAvailable text', function() {
+test('return the StaffHelpAvailable text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -206,7 +206,7 @@ it('returns the StaffHelpAvailable text', function() {
         ->toBe('<p>Monday to Friday 04:00 to 01:00</p><p>Saturday 04:00 to 00:30</p><p>Sunday 07:00 to 00:30</p>');
 });
 
-it('returns the accessibility helpline text', function() {
+test('return the accessibility helpline text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -215,7 +215,7 @@ it('returns the accessibility helpline text', function() {
         ->toBe('<p>We want everyone to travel with confidence. That is why, if you are planning on travelling on national rail services, you can request an assistance booking in advance - now up to 2 hours before your journey is due to start, any time of the day. For more information about Passenger Assist and how to request an assistance booking via Passenger Assist, please <a href="https://www.nationalrail.co.uk/stations_destinations/passenger-assist.aspx" title="">click here</a>.</p>');
 });
 
-it('returns the AccessiblePublicTelephones text', function() {
+test('return the AccessiblePublicTelephones text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -224,7 +224,7 @@ it('returns the AccessiblePublicTelephones text', function() {
         ->toBe('<p>There are four payphones in the concourse and one each on platforms 1/2, 3/4 and 6/7.</p>');
 });
 
-it('returns the NationalKeyToilets text', function() {
+test('return the NationalKeyToilets text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -233,7 +233,7 @@ it('returns the NationalKeyToilets text', function() {
         ->toBe('<p>The National Key/Accessible toilets are located in the East Subway near the lifts and on Platform 8; these toilets are operated by a RADAR key and are only available during staffing hours.</p>');
 });
 
-it('returns the StepFreeAccess text', function() {
+test('return the StepFreeAccess text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -242,7 +242,7 @@ it('returns the StepFreeAccess text', function() {
         ->toBe('<p>Category A.</p><p>Step free access is available to Platforms 0 to 8.</p>');
 });
 
-it('returns the TicketGates text', function() {
+test('return the TicketGates text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -251,7 +251,7 @@ it('returns the TicketGates text', function() {
         ->toBe('<p>Accessible gate available at each set of ticket gates</p>');
 });
 
-it('returns the ticket office location text', function() {
+test('return the ticket office location text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -260,7 +260,7 @@ it('returns the ticket office location text', function() {
         ->toBe('<p>At the Penarth Road entrance and on the concourse.</p>');
 });
 
-it('returns the cycle storage text', function() {
+test('return the cycle storage text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -272,7 +272,7 @@ it('returns the cycle storage text', function() {
         ->toBe('<p>East end of platforms 1 and 2, 3 and 4, 6 and 7 - also at the front and rear of the station.</p>');
 });
 
-it('returns the station buffet text', function() {
+test('return the station buffet text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -281,7 +281,7 @@ it('returns the station buffet text', function() {
         ->toBe('<p>Cold drinks vending machine.</p><p>Hot drinks vending machine.</p><p>Food vending machine.</p><p>Food outlet (Seating available).</p>');
 });
 
-it('returns the first class lounge text', function() {
+test('return the first class lounge text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -290,7 +290,7 @@ it('returns the first class lounge text', function() {
         ->toBe('<p>Located on Platform 1 </p><p>All First Class tickets accepted.</p><p>A comfortable modern lounge, with information screens, complimentary refreshments and a dedicated customer host ready to serve you. </p><p>Wi-Fi is available.</p>');
 });
 
-it('returns the postbox location text', function() {
+test('return the postbox location text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -299,7 +299,7 @@ it('returns the postbox location text', function() {
         ->toBe('<p>At the Penarth Road entrance and also in the main concourse.</p>');
 });
 
-it('returns the ATM machine location text', function() {
+test('return the ATM machine location text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -308,7 +308,7 @@ it('returns the ATM machine location text', function() {
         ->toBe('<p>Located outside the main entrance.</p>');
 });
 
-it('returns the shops text', function() {
+test('return the shops text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -317,7 +317,7 @@ it('returns the shops text', function() {
         ->toBe('<p>News agent and convenience store</p>');
 });
 
-it('returns the toilets location text', function() {
+test('return the toilets location text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -326,7 +326,7 @@ it('returns the toilets location text', function() {
         ->toBe('<p>The toilets are located on Platforms 1 to 8. The National Key toilets are located in the East Subway near the lifts and on Platform 8; these toilets are operated by a radar key and are only available during staffing hours.</p>');
 });
 
-it('returns the waiting room open and location text', function() {
+test('return the waiting room open and location text', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -335,7 +335,7 @@ it('returns the waiting room open and location text', function() {
     expect($station->getWaitingRoomLocationText())->toBe('<p>On platforms 1/2, 3/4, 6/7 and 8.</p>');
 });
 
-it('returns the name and operator name for a single car park', function() {
+test('return the name and operator name for a single car park', function() {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.xml');
 
     $station = $this->parser->parseStation($data);
@@ -368,7 +368,7 @@ test('some 5 line addresses have only three lines', function() {
     expect($station->getAddress()->postcode)->toBe('KY8 4LQ');
 });
 
-it('returns a null value for text values if they are not present', function() {
+test('return a null value for text values if they are not present', function() {
     $data = <<<EOF
         <Station>
             <CrsCode>CDF</CrsCode>
@@ -411,7 +411,7 @@ it('returns a null value for text values if they are not present', function() {
     expect($station->getWiFiText())->toBeNull();
 });
 
-it('returns the ticket office closing time for a station where days are set as MondayToFriday', function () {
+test('return the ticket office closing time for a station where days are set as MondayToFriday', function () {
     $data = file_get_contents(__DIR__.'/../stubs/NWP.xml');
 
     $station = $this->parser->parseStation($data);
@@ -426,7 +426,7 @@ it('returns the ticket office closing time for a station where days are set as M
     expect($station->getClosingTime(day: 'Sunday'))->toBe('19:45');
 });
 
-it('returns the ticket office closing time for a station where days are defined as different days', function () {
+test('return the ticket office closing time for a station where days are defined as different days', function () {
     $xml = file_get_contents(__DIR__.'/../stubs/TRF.xml');
 
     $station = $this->parser->parseStation($xml);
@@ -441,7 +441,7 @@ it('returns the ticket office closing time for a station where days are defined 
     expect($station->getClosingTime(day: 'Sunday'))->toBeNull();
 });
 
-it('returns null if a station does not have a ticket office', function() {
+test('return null if a station does not have a ticket office', function() {
     $data = <<<EOF
         <Station>
             <CrsCode>TRE</CrsCode>

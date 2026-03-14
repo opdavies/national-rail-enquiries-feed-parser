@@ -8,7 +8,7 @@ beforeEach(function () {
     $this->parser = new StationsJsonFeedParser();
 });
 
-it('parses a list of stations from JSON', function () {
+test('parse a list of stations from JSON', function () {
     $data = <<<EOF
     [
         { "CrsCode": "CDF", "Name": "Cardiff Central" },
@@ -28,7 +28,7 @@ it('parses a list of stations from JSON', function () {
         ->each->toBeInstanceOf(Station::class);
 });
 
-it('parses an empty list of stations from JSON', function () {
+test('parse an empty list of stations from JSON', function () {
     $parser = new StationsJsonFeedParser();
 
     $stations = $parser->parseStationList('[]');
@@ -36,7 +36,7 @@ it('parses an empty list of stations from JSON', function () {
     expect($stations)->toBeEmpty();
 });
 
-it('parses a single station from JSON', function () {
+test('parse a single station from JSON', function () {
     $data = <<<EOF
     {
       "Accessibility": {
@@ -62,7 +62,7 @@ it('parses a single station from JSON', function () {
     expect($station->getName())->toBe('Cardiff Central');
 });
 
-it('throws an exception if the CRS code is too short', function () {
+test('throw an exception if the CRS code is too short', function () {
     $data = '{ "CrsCode": "AA", "Name": "::Name::" }';
 
     $parser = new StationsJsonFeedParser();
@@ -70,7 +70,7 @@ it('throws an exception if the CRS code is too short', function () {
     $parser->parseStation($data);
 })->throws(ValidationFailedException::class);
 
-it('throws an exception if the CRS code is too long', function () {
+test('throw an exception if the CRS code is too long', function () {
     $data = '{ "CrsCode": "AAAA", "Name": "::Name::" }';
 
     $parser = new StationsJsonFeedParser();
@@ -78,7 +78,7 @@ it('throws an exception if the CRS code is too long', function () {
     $parser->parseStation($data);
 })->throws(ValidationFailedException::class);
 
-it('throws an exception if the CRS code contains invalid characters', function () {
+test('throw an exception if the CRS code contains invalid characters', function () {
     $data = '{ "CrsCode": "123", "Name": "::Name::" }';
 
     $parser = new StationsJsonFeedParser();
@@ -86,7 +86,7 @@ it('throws an exception if the CRS code contains invalid characters', function (
     $parser->parseStation($data);
 })->throws(ValidationFailedException::class);
 
-it("returns the postcode for a station", function () {
+test('return the postcode for a station', function  () {
     $data = file_get_contents(__DIR__.'/../stubs/ABE.json');
 
     $station = $this->parser->parseStation($data);
@@ -94,7 +94,7 @@ it("returns the postcode for a station", function () {
     expect($station->getPostcode())->toBe('CF83 1AQ');
 });
 
-it('returns the ticket office closing time for a station where days are set as MondayToFriday', function () {
+test('return the ticket office closing time for a station where days are set as MondayToFriday', function () {
     $data = file_get_contents(__DIR__.'/../stubs/NWP.json');
 
     $station = $this->parser->parseStation($data);
@@ -109,7 +109,7 @@ it('returns the ticket office closing time for a station where days are set as M
     expect($station->getClosingTime(day: 'Sunday'))->toBe('19:45');
 });
 
-it('returns the ticket office closing time for a station where days are defined as different days', function () {
+test('return the ticket office closing time for a station where days are defined as different days', function () {
     $json = file_get_contents(__DIR__.'/../stubs/TRF.json');
 
     $station = $this->parser->parseStation($json);
@@ -124,7 +124,7 @@ it('returns the ticket office closing time for a station where days are defined 
     expect($station->getClosingTime(day: 'Sunday'))->toBeNull();
 });
 
-it('returns null if a station does not have a ticket office', function() {
+test('return null if a station does not have a ticket office', function() {
     $data = <<<EOF
       {
         "CrsCode": "TRE",
