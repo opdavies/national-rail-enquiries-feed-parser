@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Opdavies\NationalRailEnquriesFeedParser\Parser;
+namespace Opdavies\NationalRailEnquriesFeedParser;
 
-use Opdavies\NationalRailEnquriesFeedParser\Serializer\StationSerializer;
 use Symfony\Component\Serializer\SerializerInterface;
 
 abstract class AbstractStationParser implements StationsFeedParser

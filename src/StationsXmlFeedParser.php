@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Opdavies\NationalRailEnquriesFeedParser\Parser;
+namespace Opdavies\NationalRailEnquriesFeedParser;
 
-use Opdavies\NationalRailEnquriesFeedParser\Collection\StationCollection;
-use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
 use Webmozart\Assert\Assert;
 use Webmozart\Assert\InvalidArgumentException;
 

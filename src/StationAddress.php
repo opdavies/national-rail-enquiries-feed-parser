@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Opdavies\NationalRailEnquriesFeedParser\DataTransferObject;
+namespace Opdavies\NationalRailEnquriesFeedParser;
 
 final class StationAddress
 {

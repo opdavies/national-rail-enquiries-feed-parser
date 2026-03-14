@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Opdavies\NationalRailEnquriesFeedParser\Collection;
+namespace Opdavies\NationalRailEnquriesFeedParser;
 
 use Doctrine\Common\Collections\ArrayCollection;
 

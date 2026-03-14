@@ -2,10 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Opdavies\NationalRailEnquriesFeedParser\Parser;
-
-use Opdavies\NationalRailEnquriesFeedParser\Collection\StationCollection;
-use Opdavies\NationalRailEnquriesFeedParser\Model\Station;
+namespace Opdavies\NationalRailEnquriesFeedParser;
 
 interface StationsFeedParser
 {

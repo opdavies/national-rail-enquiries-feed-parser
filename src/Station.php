@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Opdavies\NationalRailEnquriesFeedParser\Model;
+namespace Opdavies\NationalRailEnquriesFeedParser;
 
-use Opdavies\NationalRailEnquriesFeedParser\DataTransferObject\StationAddress;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final class Station

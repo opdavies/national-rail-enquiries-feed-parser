@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "Opdavies\\NationalRailEnquriesFeedParser\\": "src/"
-        }
+        },
+        "files": [
+            "bc.php"
+        ]
     },
     "authors": [
         {
