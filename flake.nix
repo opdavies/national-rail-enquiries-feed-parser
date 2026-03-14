@@ -14,7 +14,33 @@
         formatter = pkgs.nixpkgs-fmt;
 
         devshells.default = {
-          packages = with pkgs; [ "php80" "php80Packages.composer" ];
+          packages = with pkgs; [ php80 php80Packages.composer ];
+
+          commands =
+            let
+              inherit (pkgs) writeShellApplication;
+            in
+            [
+              {
+                package = writeShellApplication {
+                  name = "run-tests";
+                  text = ''vendor/bin/pest "$@"'';
+                };
+
+                help = "runs the automated tests";
+              }
+
+              {
+                package = writeShellApplication {
+                  name = "setup";
+                  text = ''
+                    composer install
+                  '';
+                };
+
+                help = "sets up the project for local development";
+              }
+            ];
         };
       };
     };
