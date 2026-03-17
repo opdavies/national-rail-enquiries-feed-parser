@@ -7,42 +7,20 @@ declare(strict_types=1);
  * These can be removed in the next major release.
  */
 
-class_alias(
-    \Opdavies\NationalRailEnquriesFeedParser\AbstractStationParser::class,
-    \Opdavies\NationalRailEnquriesFeedParser\Parser\AbstractStationParser::class
-);
+$map = [
+    'AbstractStationParser' => 'Parser',
+    'Station' => 'Model',
+    'StationAddress' => 'DataTransferObject',
+    'StationCollection' => 'Collection',
+    'StationSerializer' => 'Serializer',
+    'StationsFeedParser' => 'Parser',
+    'StationsJsonFeedParser' => 'Parser',
+    'StationsXmlFeedParser' => 'Parser',
+];
 
-class_alias(
-    \Opdavies\NationalRailEnquriesFeedParser\Station::class,
-    \Opdavies\NationalRailEnquriesFeedParser\Model\Station::class
-);
-
-class_alias(
-    \Opdavies\NationalRailEnquriesFeedParser\StationAddress::class,
-    \Opdavies\NationalRailEnquriesFeedParser\DataTransferObject\StationAddress::class
-);
-
-class_alias(
-    \Opdavies\NationalRailEnquriesFeedParser\StationCollection::class,
-    \Opdavies\NationalRailEnquriesFeedParser\Collection\StationCollection::class
-);
-
-class_alias(
-    \Opdavies\NationalRailEnquriesFeedParser\StationSerializer::class,
-    \Opdavies\NationalRailEnquriesFeedParser\Serializer\StationSerializer::class
-);
-
-class_alias(
-    \Opdavies\NationalRailEnquriesFeedParser\StationsFeedParser::class,
-    \Opdavies\NationalRailEnquriesFeedParser\Parser\StationsFeedParser::class
-);
-
-class_alias(
-    \Opdavies\NationalRailEnquriesFeedParser\StationsJsonFeedParser::class,
-    \Opdavies\NationalRailEnquriesFeedParser\Parser\StationsJsonFeedParser::class
-);
-
-class_alias(
-    \Opdavies\NationalRailEnquriesFeedParser\StationsXmlFeedParser::class,
-    \Opdavies\NationalRailEnquriesFeedParser\Parser\StationsXmlFeedParser::class
-);
+foreach ($map as $class => $subNamespace) {
+    class_alias(
+        "Opdavies\\NationalRailEnquriesFeedParser\\{$class}",
+        "Opdavies\\NationalRailEnquriesFeedParser\\{$subNamespace}\\{$class}"
+    );
+}
