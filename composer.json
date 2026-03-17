@@ -8,7 +8,7 @@
             "Opdavies\\NationalRailEnquriesFeedParser\\": "src/"
         },
         "files": [
-            "bc.php"
+            "deprecated.php"
         ]
     },
     "authors": [
