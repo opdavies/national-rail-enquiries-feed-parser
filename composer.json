@@ -30,6 +30,7 @@
     "require-dev": {
         "pestphp/pest": "^1.21",
         "phpstan/phpstan": "^1.7",
+        "svanderburg/composer2nix": "^0.0.6",
         "symfony/var-dumper": "^5.4|^6.3"
     },
     "config": {
